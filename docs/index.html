@@ -4,13 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Javier Frank - Agente Inmboliario</title>
+    <title>Javier Frank | Propiedades en Buenos Aires | Agente Inmobiliario RE/MAX</title>
+    <meta name="description" content="Agente inmobiliario en RE/MAX Amazing Buenos Aires. Venta, alquiler y asesoramiento en propiedades. Encontrá tu próxima inversión con Javier Frank.">
+    <meta name="keywords" content="Javier Frank, propiedades Buenos Aires, RE/MAX, real estate Argentina, agente inmobiliario, casas en venta, departamentos en alquiler, real estate Buenos Aires">
+    <meta property="og:title" content="Javier Frank | Propiedades en Buenos Aires" />
+    <meta property="og:description" content="Agente inmobiliario en RE/MAX Buenos Aires. Venta y alquiler de propiedades. Asesoramiento personalizado." />
+    <meta property="og:image" content="https://tu-dominio.com/img/imagen-de-portada.jpg" />
+    <meta property="og:url" content="https://tu-dominio.com" />
+    <meta property="og:type" content="website" />
+
     <link rel="stylesheet" href="fontawesome-5.5/css/all.min.css" />
     <link rel="stylesheet" href="slick/slick.css">
     <link rel="stylesheet" href="slick/slick-theme.css">
     <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/tooplate-infinite-loop.css" />
+    <link rel="stylesheet" href="css/cards.css" />
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+    
 <!--
 Tooplate 2117 Infinite Loop
 https://www.tooplate.com/view/2117-infinite-loop
@@ -35,7 +46,7 @@ https://www.tooplate.com/view/2117-infinite-loop
               <li class="nav-item">
                 <a class="nav-link tm-nav-link" href="#whatwedo">Servicios</a>
               </li>
-            <li class="nav-item">
+              <li class="nav-item">
                   <a class="nav-link tm-nav-link" href="#gallery">Propiedades</a>
               </li>
               <li class="nav-item">
@@ -76,13 +87,7 @@ https://www.tooplate.com/view/2117-infinite-loop
                     </div>
                 </div>
             </div><!-- first row -->
-            
-            <div class="row justify-content-center">
-              <div class="col-4 text-center">
-                <img src="img/logoremaxtrans.png" alt="Logo RE/MAX" class="img-fluid">
-              </div>
-            </div>            
-            
+                        
             <div class="row tm-content-box"><!-- second row -->
         		<div class="col-lg-1">
                     <i class="far fa-3x fa-chart-bar text-center tm-icon"></i>
@@ -115,95 +120,82 @@ https://www.tooplate.com/view/2117-infinite-loop
             
         </div>
       
-    </section>
-    
+    </section>    
     <section id="gallery" class="tm-section-pad-top">
       <div class="container tm-container-gallery">
         <div class="row">
           <div class="text-center col-12">
             <h2 class="tm-text-primary tm-section-title mb-4">Propiedades</h2>
-            <p class="mb-4 tm-intro-text">Estas son algunas de las propiedades en venta y/o alquiler. Si te interesa alguna, no dudes en contactarnos. <b>Tambien podemos ayudarte a encontrar la propiedad que buscás</b>.</p>
+            <p class="mb-4 tm-intro-text">Estas son algunas de las propiedades en venta y/o alquiler. Si te interesa alguna, no dudes en contactarnos. <a href="https://www.remax.com.ar/">También podemos ayudarte a encontrar la propiedad que buscás</a>.</p>
           </div>
         </div>
         <div class="row">
-          <div class="col-12">
-            <div class="mx-auto tm-gallery-container">
-              <div class="grid tm-gallery" id="propiedades"></div>
+        
+          <div class="container my-5">
+            <div id="propiedades" class="row">
+              <!-- Las tarjetas se insertarán aquí -->
             </div>
           </div>
+                    
         </div>
       </div>
+      
+      <script>
+        fetch("data/propiedades.json")
+          .then(response => response.json())
+          .then(data => {
+            const container = document.getElementById("propiedades");
+        
+            data.forEach(prop => {
+              const col = document.createElement("div");
+              col.className = "col-12 col-md-6 col-lg-4 mb-4";
+        
+              const card = document.createElement("div");
+              card.className = "card h-100 shadow-sm";
+        
+              const img = document.createElement("img");
+              img.src = prop.imagen;
+              img.alt = prop.titulo;
+              img.className = "card-img-top";
+              img.setAttribute("draggable", "false");
+        
+              const body = document.createElement("div");
+              body.className = "card-body";
+        
+              const titulo = document.createElement("h5");
+              titulo.className = "card-title";
+              titulo.textContent = prop.titulo;
+        
+              const ubicacion = document.createElement("p");
+              ubicacion.className = "card-text";
+              ubicacion.textContent = prop.ubicacion;
+        
+              const precio = document.createElement("p");
+              precio.className = "card-text font-weight-bold";
+              precio.textContent = prop.precio;
+        
+              const btn = document.createElement("button");
+              btn.className = "btn btn-primary btn-sm";
+              btn.textContent = "Ver más";
+              btn.onclick = function () {
+                window.open(prop.url, "_blank");
+              };
+        
+              body.appendChild(titulo);
+              body.appendChild(ubicacion);
+              body.appendChild(precio);
+              body.appendChild(btn);
+              card.appendChild(img);
+              card.appendChild(body);
+              col.appendChild(card);
+              container.appendChild(col);
+            });
+          })
+          .catch(error => console.error("Error cargando propiedades:", error));
+    
+      </script>    
     </section>
     
-    <script>
-      fetch("data/propiedades.json")
-        .then(response => response.json())
-        .then(data => {
-          const container = document.getElementById("propiedades");
-      
-          const row = document.createElement("div");
-          row.className = "row g-4"; // g-4 = gutter (espaciado entre columnas)
-      
-          data.forEach(prop => {
-            // Columna Bootstrap
-            const col = document.createElement("div");
-            // col.className = "col-md-4";
-            col.className = "col-md-4 my-4";
-
-      
-            // Card Bootstrap
-            const card = document.createElement("div");
-            card.className = "card h-100 shadow-sm";
-      
-            // Imagen
-            const img = document.createElement("img");
-            img.src = prop.imagen;
-            img.alt = prop.titulo;
-            img.className = "card-img-top";
-      
-            // Cuerpo de la card
-            const cardBody = document.createElement("div");
-            cardBody.className = "card-body";
-      
-            const descripcion = document.createElement("p");
-            descripcion.className = "card-tilte";
-            descripcion.textContent = prop.titulo;
-
-            const ubicacion = document.createElement("h5");
-            ubicacion.className = "card-text";
-            ubicacion.textContent = prop.ubicacion;
-                  
-            const precio = document.createElement("p");
-            precio.className = "card-text";
-            precio.textContent = prop.precio;
-                  
-            // Botón real
-            const button = document.createElement("button");
-            button.className = "btn btn-primary";
-            button.textContent = "Ver más";
-            button.onclick = function () {
-              window.open(prop.url, "_blank");
-            };
-      
-            // Armar estructura
-            cardBody.appendChild(descripcion);
-            cardBody.appendChild(ubicacion);
-            cardBody.appendChild(precio);
-            cardBody.appendChild(button);
-
-      
-            card.appendChild(img);
-            card.appendChild(cardBody);
-            col.appendChild(card);
-            row.appendChild(col);
-          });
-      
-          container.appendChild(row);
-        })
-        .catch(error => console.error("Error cargando propiedades:", error));
-    </script>
-      
-
     <!-- Contact -->
     <section id="contact" class="tm-section-pad-top tm-parallax-2">      
       <div class="container tm-testimonials-content">
