@@ -71,8 +71,8 @@ https://www.tooplate.com/view/2117-infinite-loop
                         <img src="img/fotojfconfondo.jpg" alt="Image" class="img-fluid mx-auto">
                       </figure>
                               
-                      <h2 class="tm-text-primary mb-4">Servicios</h2>              
-                      <p class="mb-4 tm-intro-text">Soy <b>Javier Frank, agente inmobiliario</b> con base en Buenos Aires y desde <a href="https://remax-amazing.com.ar/">RE/MAX Amazing</a> brindamos servicios personalizados de compra, venta, tasación y asesoramiento inmobiliario. Acompañamos a cada cliente en cada etapa del proceso, con transparencia, compromiso y el respaldo de una de las redes más reconocidas del mercado. <b>Ya sea que estés buscando tu nuevo hogar o querés vender con estrategia, estamos para ayudarte a tomar decisiones seguras y bien fundamentadas</b>.</p>
+                      <h2 class="tm-text-primary mb-4">Javier Frank</h2>              
+                      <p class="mb-4 tm-intro-text">Soy <b>agente inmobiliario</b> con base en Buenos Aires y desde <a href="https://remax-amazing.com.ar/">RE/MAX Amazing</a> brindamos servicios personalizados de compra, venta, tasación y asesoramiento inmobiliario. Acompañamos a cada cliente en cada etapa del proceso, con transparencia, compromiso y el respaldo de una de las redes más reconocidas del mercado. <b>Ya sea que estés buscando tu nuevo hogar o querés vender con estrategia, estamos para ayudarte a tomar decisiones seguras y bien fundamentadas</b>.</p>
                     </div>
                 </div>
             </div><!-- first row -->
@@ -136,41 +136,73 @@ https://www.tooplate.com/view/2117-infinite-loop
     </section>
     
     <script>
-    fetch("data/propiedades.json")
-      .then(response => response.json())
-      .then(data => {
-        const container = document.getElementById("propiedades");
-        data.forEach(prop => {
-          const wrapper = document.createElement("div");
-          wrapper.className = "tm-gallery-item-wrapper mb-4";
-    
-          const item = document.createElement("figure");
-          item.className = "effect-honey tm-gallery-item";
-          
-          const img = document.createElement("img");
-          img.src = prop.imagen;
-          img.alt = prop.titulo;
-          img.className = "img-fluid";
-    
-          const caption = document.createElement("figcaption");
-          caption.innerHTML = `
-            <h2>
-              <i>${prop.ubicacion}<br><span>${prop.precio}</span>
-              <br></i>
-            </h2>
-          `;
-          caption.onclick = function() {
-            window.open(prop.url, '_blank');
-          };
-        
-          item.appendChild(img);
-          item.appendChild(caption);
-          wrapper.appendChild(item);
-          container.appendChild(wrapper);
-        });
-      })
-      .catch(error => console.error("Error cargando propiedades:", error));
+      fetch("data/propiedades.json")
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById("propiedades");
+      
+          const row = document.createElement("div");
+          row.className = "row g-4"; // g-4 = gutter (espaciado entre columnas)
+      
+          data.forEach(prop => {
+            // Columna Bootstrap
+            const col = document.createElement("div");
+            // col.className = "col-md-4";
+            col.className = "col-md-4 my-4";
+
+      
+            // Card Bootstrap
+            const card = document.createElement("div");
+            card.className = "card h-100 shadow-sm";
+      
+            // Imagen
+            const img = document.createElement("img");
+            img.src = prop.imagen;
+            img.alt = prop.titulo;
+            img.className = "card-img-top";
+      
+            // Cuerpo de la card
+            const cardBody = document.createElement("div");
+            cardBody.className = "card-body";
+      
+            const descripcion = document.createElement("p");
+            descripcion.className = "card-tilte";
+            descripcion.textContent = prop.titulo;
+
+            const ubicacion = document.createElement("h5");
+            ubicacion.className = "card-text";
+            ubicacion.textContent = prop.ubicacion;
+                  
+            const precio = document.createElement("p");
+            precio.className = "card-text";
+            precio.textContent = prop.precio;
+                  
+            // Botón real
+            const button = document.createElement("button");
+            button.className = "btn btn-primary";
+            button.textContent = "Ver más";
+            button.onclick = function () {
+              window.open(prop.url, "_blank");
+            };
+      
+            // Armar estructura
+            cardBody.appendChild(descripcion);
+            cardBody.appendChild(ubicacion);
+            cardBody.appendChild(precio);
+            cardBody.appendChild(button);
+
+      
+            card.appendChild(img);
+            card.appendChild(cardBody);
+            col.appendChild(card);
+            row.appendChild(col);
+          });
+      
+          container.appendChild(row);
+        })
+        .catch(error => console.error("Error cargando propiedades:", error));
     </script>
+      
 
     <!-- Contact -->
     <section id="contact" class="tm-section-pad-top tm-parallax-2">      
