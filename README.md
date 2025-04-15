@@ -16,5 +16,3 @@ Mostrar propiedades en venta gestionadas por Javier Frank a través de un sitio 
 ### Estado del workflow
 
 ![Scrape Properties Daily](https://github.com/javofrank/javierfrank.ar/actions/workflows/scrape.yml/badge.svg)
-
-![Última actualización](https://img.shields.io/github/last-commit/javofrank/javierfrank.ar/docs/data/propiedades.json?label=Último%20scraping)
