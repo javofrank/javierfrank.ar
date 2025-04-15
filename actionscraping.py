@@ -78,7 +78,7 @@ for card in cards:
 
 # Guardar JSON
 os.makedirs("data", exist_ok=True)
-with open("web/data/propiedades.json", "w", encoding="utf-8") as f:
+with open("docs/data/propiedades.json", "w", encoding="utf-8") as f:
     json.dump(properties, f, ensure_ascii=False, indent=2)
 
 driver.quit()
