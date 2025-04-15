@@ -3,7 +3,7 @@ name: Scrape Properties Daily
 on:
   schedule:
     - cron: '0 8 * * *'  # Todos los días a las 8:00 UTC (~5 AM Buenos Aires)
-  workflow_dispatch:     # Permite ejecutarlo manualmente desde la UI de GitHub
+  workflow_dispatch:
 
 jobs:
   scrape:
@@ -32,4 +32,5 @@ jobs:
           git config user.email "github-actions@github.com"
           git add docs/data/propiedades.json
           git diff --quiet && git diff --staged --quiet || git commit -m "🔄 Auto-update propiedades.json"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git push
