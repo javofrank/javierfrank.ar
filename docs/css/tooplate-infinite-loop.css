@@ -90,18 +90,18 @@ blockquote {
 }
 
 .navbar-brand {
-  color: white;
+  color: #38B;
   font-size: 1.4rem;
   font-weight: bold;
 }
 
 .navbar-brand:hover,
 .tm-navbar.scroll .navbar-brand:hover {
-  color: #38B;
-}
+  color: #6AD5CB;
+} 
 
 .tm-navbar.scroll .navbar-brand {
-  color: #369;
+  color: #6AD5CB;  
 }
 
 .nav-item {
@@ -109,7 +109,7 @@ blockquote {
 }
 
 .tm-nav-link {
-  color: white;
+  color: #C0BCB5;
 }
 
 .tm-navbar.scroll .tm-nav-link {
@@ -119,18 +119,18 @@ blockquote {
 .tm-navbar.scroll .tm-nav-link:hover,
 .tm-navbar.scroll .tm-nav-link.current,
 .tm-nav-link:hover {
-  color: #FFF;
+  color: #C0BCB5;
   background-color: #369;
 }
 
 .navbar-toggler {
-  border: 1px solid white;
+  border: 1px solid #C0BCB5;
   padding-left: 10px;
   padding-right: 10px;
 }
 
 .navbar-toggler-icon {
-  color: white;
+  color: #C0BCB5;
   padding-top: 6px;
 }
 
