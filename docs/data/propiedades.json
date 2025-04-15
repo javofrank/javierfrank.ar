@@ -3,42 +3,119 @@
     "titulo": "VENTA DPTO 2 AMB COCHERA BAULERA AMENITIES PALERMO",
     "ubicacion": "Guatemala 5900",
     "precio": "210.000 USD",
-    "imagen": "",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/a74e8175-926f-47ed-af1b-9a3639b1f416/360x200/2b53c17c-0dd9-4fc0-8c8d-8b85efd16216.webp",
     "url": "https://www.remax.com.ar/listings/venta-dpto-2-amb-cochera-baulera-amenities-palermo"
   },
   {
     "titulo": "LOCAL COMERCIAL EN VENTA EN RECOLETA",
     "ubicacion": "Junín 1200",
     "precio": "90.000 USD",
-    "imagen": "",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/1d4140db-0936-4768-8d35-3036c241173d/360x200/236af1ce-1188-4bb0-afe5-2c1f686abd6a.webp",
     "url": "https://www.remax.com.ar/listings/local-comercial-en-venta-en-recoleta"
   },
   {
     "titulo": "ALQUILER AMOBLADO PARQUE CENTENARIO AMENITIES",
     "ubicacion": "Bartolome Mitre 4400",
     "precio": "700 USD",
-    "imagen": "",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/06b00680-bca9-4a23-9c37-4ceae6b3a7d1/360x200/89318028-864b-44c6-ba15-2cf088c32e7f.webp",
     "url": "https://www.remax.com.ar/listings/alquiler-amoblado-parque-centenario-amenities"
   },
   {
     "titulo": "DEPARTAMENTO 3 AMBIENTES EN VENTA WILDE LUMINOSO",
     "ubicacion": "Bahía Blanca 600",
     "precio": "75.000 USD",
-    "imagen": "",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/61a102ac-7f76-4bbc-a25f-d1fb4be8a7c4/360x200/cac115c2-77de-42c9-b223-90c1548218ce.webp",
     "url": "https://www.remax.com.ar/listings/departamento-3-ambientes-en-venta-wilde-luminoso"
   },
   {
     "titulo": "CASA 4 AMBIENTES EN VENTA QUILMES REFACCIONADA",
     "ubicacion": "Condarco 2100",
     "precio": "110.000 USD",
-    "imagen": "",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/5175a5ce-ffb0-4ada-a6ff-e1fb447b9d65/360x200/d77d9d9e-ed56-474f-b4cb-776196029ab1.webp",
     "url": "https://www.remax.com.ar/listings/casa-4-ambientes-en-venta-quilmes-refaccionada"
   },
   {
     "titulo": "DEPARTAMENTO 2 AMBIENTES VENTA PALERMO PZA ITALIA",
     "ubicacion": "Avenida Santa Fe 4000",
     "precio": "143.000 USD",
-    "imagen": "",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/37b90b56-d35e-423a-b9a0-9cad1b102c22/360x200/3e323e89-c415-427a-bac3-7495a1911f77.webp",
     "url": "https://www.remax.com.ar/listings/departamento-2-ambientes-venta-palermo-pza-italia"
+  },
+  {
+    "titulo": "VENTA DEPARTAMENTO 2 AMBIENTES PALERMO CON TERRAZA",
+    "ubicacion": "Paraguay 3800",
+    "precio": "130.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/0a3878ab-e24e-4095-b268-e48a4f82cc96/360x200/e5c56b87-5736-46f6-9d3b-e38e06aa4029.webp",
+    "url": "https://www.remax.com.ar/listings/venta-departamento-2-ambientes-palermo-con-terraza"
+  },
+  {
+    "titulo": "Venta 3 unidades PH en bloque.",
+    "ubicacion": "Irala 4400",
+    "precio": "149.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/82de2d6b-44e0-46cc-be42-1c68d842b9b4/360x200/b5e07b1b-01c5-467b-9c47-50889c84769b.webp",
+    "url": "https://www.remax.com.ar/listings/venta-3-unidades-ph-en-bloque"
+  },
+  {
+    "titulo": "VENTA PH 4 AMBIENTES CON COCHERA QUILMES OESTE",
+    "ubicacion": "Irala 4400",
+    "precio": "76.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/3c72572c-cf63-40c0-968a-4caa95c6886d/360x200/414c2fc3-5482-4a1c-b8b7-d8dd82aabe5b.webp",
+    "url": "https://www.remax.com.ar/listings/venta-ph-4-ambientes-con-cochera-quilmes-oeste"
+  },
+  {
+    "titulo": "VENTA PH 3 AMBIENTES AL FRENTE CON COCHERA QUILMES",
+    "ubicacion": "Irala 4400",
+    "precio": "45.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/ac4a18b9-5a30-414c-aa46-7b6821e0e4ab/360x200/bf9d992e-0b3a-420f-b157-ae2a717b995b.webp",
+    "url": "https://www.remax.com.ar/listings/venta-ph-3-ambientes-al-frente-con-cochera-quilmes"
+  },
+  {
+    "titulo": "VENTA PH 2 AMBIENTES QUILMES OESTE",
+    "ubicacion": "Irala 4400",
+    "precio": "28.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/5a99b16f-b1ad-4513-a1b2-c6fd772a78f9/360x200/f67a17c4-ff0b-4eb1-82c1-6b0e76e3e448.webp",
+    "url": "https://www.remax.com.ar/listings/venta-ph-2-ambientes-quilmes-oeste-1"
+  },
+  {
+    "titulo": "Monoambiente en venta Recoleta",
+    "ubicacion": "Rodríguez Peña 1500",
+    "precio": "55.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/4ca7df7f-a3bb-4164-807d-7e2f2c0613e3/360x200/fad2e0ed-9bf4-4431-8289-e456f4d58efd.webp",
+    "url": "https://www.remax.com.ar/listings/monoambiente-en-venta-recoleta"
+  },
+  {
+    "titulo": "Departamento monoambiente en venta Colegiales",
+    "ubicacion": "Palpa 2600",
+    "precio": "95.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/829c8de4-5a69-44fa-be00-9bc2e14a9798/360x200/f15742ef-5ac2-4a9a-a559-101838d4f3ed.webp",
+    "url": "https://www.remax.com.ar/listings/departamento-monoambiente-en-venta-colegiales"
+  },
+  {
+    "titulo": "DEPTO 3 AMB EN VENTA RECOLETA RENOVADO Y AMOBLADO",
+    "ubicacion": "Av. Pueyrredon 1000",
+    "precio": "165.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/327b3fba-e6f5-417a-9a0f-829811ec302d/360x200/ac17f3e0-885b-40b8-a49d-a988dc515fd0.webp",
+    "url": "https://www.remax.com.ar/listings/depto-3-amb-en-venta-recoleta-renovado-y-amoblado"
+  },
+  {
+    "titulo": "DEPARTAMENTO 3 AMBIENTES EN VENTA TRIBUNALES",
+    "ubicacion": "Tucumán 1500",
+    "precio": "80.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/dc2095e0-27af-4376-bbc3-fefb922bc1d4/360x200/4f7ef321-3f9a-47ba-b72e-bef4a2d95bba.webp",
+    "url": "https://www.remax.com.ar/listings/departamento-3-ambientes-en-venta-tribunales"
+  },
+  {
+    "titulo": "VENTA DEPARTAMENTO 3 AMBIENTES EN BELGRANO",
+    "ubicacion": "Avenida Luis María Campos 1300",
+    "precio": "169.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/3d06d3a4-0f5f-4719-9705-d1ac2cab2fd0/360x200/37b23cda-c641-4e2f-93df-4963ff7898f1.webp",
+    "url": "https://www.remax.com.ar/listings/venta-departamento-3-ambientes-en-belgrano-3"
+  },
+  {
+    "titulo": "Venta de lotes parquizados Ezeiza Las Lomas",
+    "ubicacion": "Valle de Lerma 600",
+    "precio": "100.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/ad0351a9-ffbb-4ec8-8377-1b95fb677c35/360x200/732ef18d-aeb1-44d2-9f43-558dd71d1c13.webp",
+    "url": "https://www.remax.com.ar/listings/venta-de-lotes-parquizados-ezeiza-las-lomas"
   }
 ]
