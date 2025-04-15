@@ -7,7 +7,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 
 # Configurar Chrome en modo headless para GitHub Actions
 options = Options()
@@ -16,7 +15,8 @@ options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--disable-blink-features=AutomationControlled')
 
-service = Service(ChromeDriverManager().install())
+# Usar ChromeDriver ya instalado en el runner (no webdriver-manager)
+service = Service(executable_path="/usr/bin/chromedriver")
 driver = webdriver.Chrome(service=service, options=options)
 wait = WebDriverWait(driver, 15)
 
@@ -77,9 +77,9 @@ for card in cards:
         print(f"⚠️ Error en una tarjeta: {e}")
 
 # Guardar JSON
-os.makedirs("data", exist_ok=True)
+os.makedirs("docs/data", exist_ok=True)
 with open("docs/data/propiedades.json", "w", encoding="utf-8") as f:
     json.dump(properties, f, ensure_ascii=False, indent=2)
 
 driver.quit()
-print(f"✅ Scraping completo. {len(properties)} propiedades guardadas en data/propiedades.json")
+print(f"✅ Scraping completo. {len(properties)} propiedades guardadas en docs/data/propiedades.json")
