@@ -168,7 +168,8 @@
       </div>
       
       <script>
-        fetch("data/propiedades.json")
+        const today = new Date().toISOString().split("T")[0]; 
+        fetch(`data/propiedades.json?v=${today}`)
           .then(response => response.json())
           .then(data => {
             const container = document.getElementById("propiedades");
