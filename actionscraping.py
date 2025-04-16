@@ -1,6 +1,7 @@
 import json
 import os
 import time
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -15,7 +16,7 @@ options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--disable-blink-features=AutomationControlled')
 
-# Usar ChromeDriver ya instalado en el runner (no webdriver-manager)
+# Usar ChromeDriver preinstalado en GitHub Actions
 service = Service(executable_path="/usr/bin/chromedriver")
 driver = webdriver.Chrome(service=service, options=options)
 wait = WebDriverWait(driver, 15)
@@ -24,6 +25,12 @@ wait = WebDriverWait(driver, 15)
 driver.get("https://www.remax.com.ar/agent/javier-frank")
 time.sleep(2)
 
+# Esperar a que el botón "Ver más" esté presente (aunque no visible aún)
+try:
+    wait.until(EC.presence_of_element_located((By.ID, "view-more")))
+except:
+    print("⚠️ Botón 'Ver más' no encontrado a tiempo")
+
 # Clic en "Ver más" hasta que desaparezca o ya no cargue más propiedades
 last_count = 0
 while True:
@@ -31,7 +38,10 @@ while True:
         cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
         current_count = len(cards)
 
-        qr_button = driver.find_element(By.ID, "view-more")
+        qr_buttons = driver.find_elements(By.ID, "view-more")
+        if not qr_buttons:
+            break
+        qr_button = qr_buttons[0]
         real_button = qr_button.find_element(By.TAG_NAME, "button")
 
         if not real_button.is_displayed():
@@ -40,11 +50,11 @@ while True:
         driver.execute_script("arguments[0].scrollIntoView(true);", real_button)
         time.sleep(0.5)
         driver.execute_script("arguments[0].click();", real_button)
-        time.sleep(3)  # esperar a que se cargue el nuevo lote
+        time.sleep(3)
 
         cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
         if len(cards) == current_count:
-            break  # si no crecieron, salir
+            break
     except Exception as e:
         print("⚠️ No se puede hacer clic en 'Ver más':", e)
         break
