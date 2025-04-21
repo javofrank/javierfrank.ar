@@ -4,7 +4,7 @@ Sitio web de Javier Frank, agente inmobiliario en RE/MAX Amazing (Buenos Aires).
 
 ## ✨ Propósito
 
-Mostrar propiedades en venta gestionadas por Javier Frank a través de un sitio estático con actualizaciones automáticas desde el portal de RE/MAX.
+Mostrar presentación, servicios y propiedades en venta gestionadas por Javier Frank.
 
 ## 🚀 Automatización con GitHub Actions
 
