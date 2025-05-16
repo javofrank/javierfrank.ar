@@ -1,5 +1,12 @@
 [
   {
+    "titulo": "DEPTO 3 AMB EN ALQUILER RECOLETA RENOVADO",
+    "ubicacion": "Av. Pueyrredon 1000",
+    "precio": "1.300 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/5bbb50ba-a566-4f9c-9865-3f1fbddedb8f/360x200/ac17f3e0-885b-40b8-a49d-a988dc515fd0.webp",
+    "url": "https://www.remax.com.ar/listings/depto-3-amb-en-alquiler-recoleta-renovado"
+  },
+  {
     "titulo": "VENTA DEPTO 3 AMBIENTES BALCON DEPENDENCIA",
     "ubicacion": "Av Cabildo 1100",
     "precio": "210.000 USD",
@@ -17,14 +24,14 @@
     "titulo": "VENTA DEPARTAMENTO 3 AMBIENTES EN BELGRANO",
     "ubicacion": "Avenida Luis María Campos 1300",
     "precio": "169.000 USD",
-    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/023e18ec-7ddf-462b-96d2-b09f1e7d06e5/360x200/37b23cda-c641-4e2f-93df-4963ff7898f1.webp",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/023e18ec-7ddf-462b-96d2-b09f1e7d06e5/360x200/944d4504-d39c-4fe6-b272-f03ae34360da.webp",
     "url": "https://www.remax.com.ar/listings/venta-departamento-3-ambientes-en-belgrano-3"
   },
   {
     "titulo": "VENTA DPTO 2 AMB COCHERA BAULERA AMENITIES PALERMO",
     "ubicacion": "Guatemala 5900",
     "precio": "210.000 USD",
-    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/a74e8175-926f-47ed-af1b-9a3639b1f416/360x200/2b53c17c-0dd9-4fc0-8c8d-8b85efd16216.webp",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/a74e8175-926f-47ed-af1b-9a3639b1f416/360x200/1e1a8240-d277-4a6a-a016-fa4e9454d598.webp",
     "url": "https://www.remax.com.ar/listings/venta-dpto-2-amb-cochera-baulera-amenities-palermo"
   },
   {
@@ -110,13 +117,6 @@
     "precio": "160.000 USD",
     "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/327b3fba-e6f5-417a-9a0f-829811ec302d/360x200/ac17f3e0-885b-40b8-a49d-a988dc515fd0.webp",
     "url": "https://www.remax.com.ar/listings/depto-3-amb-en-venta-recoleta-renovado-y-amoblado"
-  },
-  {
-    "titulo": "DEPARTAMENTO 3 AMBIENTES EN VENTA TRIBUNALES",
-    "ubicacion": "Tucumán 1500",
-    "precio": "80.000 USD",
-    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/dc2095e0-27af-4376-bbc3-fefb922bc1d4/360x200/4f7ef321-3f9a-47ba-b72e-bef4a2d95bba.webp",
-    "url": "https://www.remax.com.ar/listings/departamento-3-ambientes-en-venta-tribunales"
   },
   {
     "titulo": "Venta de lotes parquizados Ezeiza Las Lomas",
