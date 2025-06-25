@@ -1,5 +1,19 @@
 [
   {
+    "titulo": "ALQUILER MONOAMBIENTE RECOLETA EXC UBICACION",
+    "ubicacion": "Rodríguez Peña 1500",
+    "precio": "350.000 ARS",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/0ba70c1f-1e14-4a64-9935-403c0c20103c/360x200/fad2e0ed-9bf4-4431-8289-e456f4d58efd.webp",
+    "url": "https://www.remax.com.ar/listings/alquiler-monoambiente-recoleta-exc-ubicacion"
+  },
+  {
+    "titulo": "ALQUILER MONOAMBIENTE TERRAZA COLEGIALES",
+    "ubicacion": "Palpa 2600",
+    "precio": "450.000 ARS",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/fc557131-e0a6-4a33-8abd-c69661ec9f07/360x200/f15742ef-5ac2-4a9a-a559-101838d4f3ed.webp",
+    "url": "https://www.remax.com.ar/listings/alquiler-monoambiente-terraza-colegiales"
+  },
+  {
     "titulo": "VENTA CASA 4 AMBIENTES QUILMES REFACCIONADA",
     "ubicacion": "Condarco 2100",
     "precio": "110.000 USD",
