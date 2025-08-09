@@ -1,5 +1,12 @@
 [
   {
+    "titulo": "VENTA DEPTO 3 AMBIENTES BALCON DEPENDENCIA",
+    "ubicacion": "Av Cabildo 1100",
+    "precio": "200.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/c0d25173-f87c-4c71-a396-1cfe85f848f4/360x200/a4b973fe-a7f5-4931-af74-bc28acda686e.webp",
+    "url": "https://www.remax.com.ar/listings/venta-depto-3-ambientes-balcon-dependencia"
+  },
+  {
     "titulo": "VENTA LOTES EZEIZA SPEGAZZINI",
     "ubicacion": "Valle de Lerma 600",
     "precio": "100.000 USD",
@@ -9,7 +16,7 @@
   {
     "titulo": "ALQUILER DPTO 2 AMB SEMI AMOBLADO AMENITIES PALERM",
     "ubicacion": "Armenia 2100",
-    "precio": "990.000 ARS",
+    "precio": "890.000 ARS",
     "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/b0a053e9-d2ab-4f91-b661-9447e5329fa5/360x200/af31a79f-4d99-42b4-a05d-8203d03e772e.webp",
     "url": "https://www.remax.com.ar/listings/alquiler-dpto-2-amb-semi-amoblado-amenities-palerm"
   },
@@ -114,7 +121,7 @@
   {
     "titulo": "VENTA DPTO 2 AMB COCHERA BAULERA AMENITIES PALERMO",
     "ubicacion": "Guatemala 5900",
-    "precio": "200.000 USD",
+    "precio": "195.000 USD",
     "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/bab33343-8e86-453e-9ad9-8e64a71fa395/360x200/1e1a8240-d277-4a6a-a016-fa4e9454d598.webp",
     "url": "https://www.remax.com.ar/listings/venta-dpto-2-amb-cochera-baulera-amenities-palermo"
   },
