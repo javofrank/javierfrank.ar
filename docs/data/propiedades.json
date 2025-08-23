@@ -63,13 +63,6 @@
     "url": "https://www.remax.com.ar/listings/venta-departamento-2-ambientes-palermo-con-terraza"
   },
   {
-    "titulo": "ALQUILER MONOAMBIENTE RECOLETA EXC UBICACION",
-    "ubicacion": "Rodríguez Peña 1500",
-    "precio": "350.000 ARS",
-    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/0ba70c1f-1e14-4a64-9935-403c0c20103c/360x200/fad2e0ed-9bf4-4431-8289-e456f4d58efd.webp",
-    "url": "https://www.remax.com.ar/listings/alquiler-monoambiente-recoleta-exc-ubicacion"
-  },
-  {
     "titulo": "VENTA CASA 4 AMBIENTES QUILMES REFACCIONADA",
     "ubicacion": "Condarco 2100",
     "precio": "90.000 USD",
@@ -140,11 +133,11 @@
     "url": "https://www.remax.com.ar/listings/venta-depto-3-ambientes-doble-balcon-en-canitas"
   },
   {
-    "titulo": "VENTA LOTE SAN MIGUEL POR AV P.PERON",
+    "titulo": "VENTA LOTE SAN MIGUEL AV P. PERON ZONA HOSPITAL",
     "ubicacion": "Av. Presidente Peron 2300",
-    "precio": "220.000 USD",
-    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/319f46dd-84db-4358-b786-c941cb243cfa/360x200/f507addd-b145-4e73-bebf-1cbd34fb0757.webp",
-    "url": "https://www.remax.com.ar/listings/venta-lote-san-miguel-por-av-p-peron"
+    "precio": "209.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/319f46dd-84db-4358-b786-c941cb243cfa/360x200/5f4976ea-2977-4df4-b57f-c9118704e67f.webp",
+    "url": "https://www.remax.com.ar/listings/venta-lote-san-miguel-av-p-peron-zona-hospital"
   },
   {
     "titulo": "LOCAL COMERCIAL EN VENTA EN RECOLETA",
