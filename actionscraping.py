@@ -23,17 +23,23 @@ wait = WebDriverWait(driver, 15)
 
 # Ir a la página del agente
 driver.get("https://www.remax.com.ar/agent/javier-frank")
+time.sleep(5)  # Increased wait for full page load
+
+# Scroll to bottom to trigger lazy loading
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 time.sleep(2)
 
 # Clic en "Ver más" hasta que desaparezca o ya no cargue más propiedades
 last_count = 0
 while True:
     try:
-        cards = driver.find_elements(By.CSS_SELECTOR, "qr-card-property")  # Updated selector for cards
+        cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")  # Updated to original class
         current_count = len(cards)
 
-        # Find button by text (more robust than ID/class)
+        # Find button more reliably
         qr_buttons = driver.find_elements(By.XPATH, "//button[contains(text(),'Ver más')]")
+        if not qr_buttons:
+            qr_buttons = driver.find_elements(By.TAG_NAME, "qr-button")  # Fallback to tag
         if not qr_buttons:
             break
         qr_button = qr_buttons[0]
@@ -44,9 +50,9 @@ while True:
         driver.execute_script("arguments[0].scrollIntoView(true);", qr_button)
         time.sleep(0.5)
         driver.execute_script("arguments[0].click();", qr_button)
-        time.sleep(3)  # Wait for new batch to load
+        time.sleep(3)
 
-        cards = driver.find_elements(By.CSS_SELECTOR, "qr-card-property")
+        cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
         if len(cards) == current_count:
             break
     except Exception as e:
@@ -54,7 +60,7 @@ while True:
         break
 
 # Extraer info del DOM
-cards = driver.find_elements(By.CSS_SELECTOR, "qr-card-property")
+cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
 print(f"✅ Se detectaron {len(cards)} propiedades")
 
 properties = []
