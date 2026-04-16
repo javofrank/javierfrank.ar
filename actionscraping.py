@@ -25,34 +25,28 @@ wait = WebDriverWait(driver, 15)
 driver.get("https://www.remax.com.ar/agent/javier-frank")
 time.sleep(2)
 
-# Esperar a que el botón "Ver más" esté presente (aunque no visible aún)
-try:
-    wait.until(EC.presence_of_element_located((By.ID, "view-more")))
-except:
-    print("⚠️ Botón 'Ver más' no encontrado a tiempo")
-
 # Clic en "Ver más" hasta que desaparezca o ya no cargue más propiedades
 last_count = 0
 while True:
     try:
-        cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
+        cards = driver.find_elements(By.CSS_SELECTOR, "qr-card-property")  # Updated selector for cards
         current_count = len(cards)
 
-        qr_buttons = driver.find_elements(By.ID, "view-more")
+        # Find button by text (more robust than ID/class)
+        qr_buttons = driver.find_elements(By.XPATH, "//button[contains(text(),'Ver más')]")
         if not qr_buttons:
             break
         qr_button = qr_buttons[0]
-        real_button = qr_button.find_element(By.TAG_NAME, "button")
 
-        if not real_button.is_displayed():
+        if not qr_button.is_displayed():
             break
 
-        driver.execute_script("arguments[0].scrollIntoView(true);", real_button)
+        driver.execute_script("arguments[0].scrollIntoView(true);", qr_button)
         time.sleep(0.5)
-        driver.execute_script("arguments[0].click();", real_button)
-        time.sleep(3)
+        driver.execute_script("arguments[0].click();", qr_button)
+        time.sleep(3)  # Wait for new batch to load
 
-        cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
+        cards = driver.find_elements(By.CSS_SELECTOR, "qr-card-property")
         if len(cards) == current_count:
             break
     except Exception as e:
@@ -60,7 +54,7 @@ while True:
         break
 
 # Extraer info del DOM
-cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
+cards = driver.find_elements(By.CSS_SELECTOR, "qr-card-property")
 print(f"✅ Se detectaron {len(cards)} propiedades")
 
 properties = []
