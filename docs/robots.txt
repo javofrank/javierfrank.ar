@@ -1,4 +1,8 @@
-# Allow AI search/indexing bots
+# Maximum visibility: allow all crawlers (including AI crawlers) by default
+User-agent: *
+Allow: /
+
+# Explicit allow rules for major AI search/indexing bots
 User-agent: OAI-SearchBot
 Allow: /
 
