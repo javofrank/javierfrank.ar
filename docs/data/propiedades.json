@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "titulo": "VENTA CASA 3 AMBIENTES LOTE PROPIO COCHERA PATIO",
+    "ubicacion": "Bertollo 1500",
+    "precio": "85.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/a43cf72a-d292-456d-bd3b-a66461ea52eb/360x200/641ca1ac-cf20-4f81-b8b0-8940a299b7ad.webp",
+    "url": "https://www.remax.com.ar/listings/venta-casa-3-ambientes-lote-propio-cochera-patio"
+  },
+  {
+    "titulo": "VENTA CASA 4 AMBIENTES COCHERA QUILMES APTO CRED",
+    "ubicacion": "Condarco 2100",
+    "precio": "90.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/a965342a-b2e5-44ad-9c01-165e5fbb00f6/360x200/d77d9d9e-ed56-474f-b4cb-776196029ab1.webp",
+    "url": "https://www.remax.com.ar/listings/venta-casa-4-ambientes-cochera-quilmes-apto-cred"
+  },
+  {
+    "titulo": "VENTA DPTO 2 AMB TERRAZA PROPIA AMOBLADO PALERMO",
+    "ubicacion": "Ciudad de la Paz 200",
+    "precio": "210.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/e472c30c-560b-4d8f-b440-1d584c40875d/360x200/93787710-74d1-4bff-a23d-c0cc4a33e796.webp",
+    "url": "https://www.remax.com.ar/listings/venta-dpto-2-amb-terraza-propia-amoblado-palermo"
+  },
+  {
+    "titulo": "VENTA PH 4 AMB TERRAZA VILLA CRESPO LUMINOSO",
+    "ubicacion": "Avenida Juan Bautista Justo 2900",
+    "precio": "139.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/170d2e75-1fce-4787-b0a8-f3c8e63b7130/360x200/43b164e5-a81f-4a0b-81cb-547ef763c506.webp",
+    "url": "https://www.remax.com.ar/listings/venta-ph-4-amb-terraza-villa-crespo-luminoso"
+  },
+  {
+    "titulo": "VENTA DEPTO 2 AMBIENTES BALCON TERRAZA PALERMO",
+    "ubicacion": "Paraguay 3800",
+    "precio": "130.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/7781badd-6b6b-44b3-bec6-d945e4c8c88b/360x200/e5c56b87-5736-46f6-9d3b-e38e06aa4029.webp",
+    "url": "https://www.remax.com.ar/listings/venta-depto-2-ambientes-balcon-terraza-palermo"
+  },
+  {
+    "titulo": "VENTA DEPTO 3 AMBIENTES DOBLE BALCON EN PALERMO",
+    "ubicacion": "Avenida Luis María Campos 1300",
+    "precio": "160.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/3ea881dc-ffa8-40b6-8c4a-cc22bb1da698/360x200/944d4504-d39c-4fe6-b272-f03ae34360da.webp",
+    "url": "https://www.remax.com.ar/listings/venta-depto-3-ambientes-doble-balcon-en-palermo"
+  }
+]
