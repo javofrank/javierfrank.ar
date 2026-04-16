@@ -1,3 +1,5 @@
+# v6 from GitHub Copilot Debugging
+
 import json
 import os
 import time
@@ -15,52 +17,36 @@ options.add_argument('--headless=new')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--disable-blink-features=AutomationControlled')
+options.add_argument('--disable-extensions')
+options.add_argument('--disable-plugins')
+options.add_argument('--disable-images')  # Speed up loading
+options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
+options.add_argument('--window-size=1920,1080')
 
 # Usar ChromeDriver preinstalado en GitHub Actions
 service = Service(executable_path="/usr/bin/chromedriver")
 driver = webdriver.Chrome(service=service, options=options)
-wait = WebDriverWait(driver, 15)
+wait = WebDriverWait(driver, 30)  # Increased timeout
 
 # Ir a la página del agente
 driver.get("https://www.remax.com.ar/agent/javier-frank")
-time.sleep(5)  # Increased wait for full page load
+time.sleep(10)  # Longer wait for JS to load
 
-# Scroll to bottom to trigger lazy loading
-driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-time.sleep(2)
+# Wait for the cards container to load
+try:
+    wait.until(EC.presence_of_element_located((By.ID, "cards-props")))
+except:
+    print("⚠️ Container #cards-props not found")
 
-# Clic en "Ver más" hasta que desaparezca o ya no cargue más propiedades
-last_count = 0
-while True:
-    try:
-        cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")  # Updated to original class
-        current_count = len(cards)
+# Scroll to trigger loading
+for _ in range(3):
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(2)
 
-        # Find button more reliably
-        qr_buttons = driver.find_elements(By.XPATH, "//button[contains(text(),'Ver más')]")
-        if not qr_buttons:
-            qr_buttons = driver.find_elements(By.TAG_NAME, "qr-button")  # Fallback to tag
-        if not qr_buttons:
-            break
-        qr_button = qr_buttons[0]
-
-        if not qr_button.is_displayed():
-            break
-
-        driver.execute_script("arguments[0].scrollIntoView(true);", qr_button)
-        time.sleep(0.5)
-        driver.execute_script("arguments[0].click();", qr_button)
-        time.sleep(3)
-
-        cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
-        if len(cards) == current_count:
-            break
-    except Exception as e:
-        print("⚠️ No se puede hacer clic en 'Ver más':", e)
-        break
-
-# Extraer info del DOM
+# Try different selectors for cards
 cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
+if not cards:
+    cards = driver.find_elements(By.CSS_SELECTOR, "qr-card-property")
 print(f"✅ Se detectaron {len(cards)} propiedades")
 
 properties = []
