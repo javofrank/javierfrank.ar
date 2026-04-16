@@ -1,4 +1,4 @@
-name: Scrape Properties Daily
+name: Scrape Properties
 
 on:
   schedule:
