@@ -1,0 +1,31 @@
+# Allow AI search/indexing bots
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Optional: allow training bots only if you are comfortable with that
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Protect areas that should never be crawled
+# User-agent: *
+# Disallow: /admin/
+# Disallow: /checkout/
+# Disallow: /account/
+# Disallow: /staging/
+
+Sitemap: https://javierfrank.ar/sitemap.xml
