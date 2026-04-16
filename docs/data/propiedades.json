@@ -40,5 +40,61 @@
     "precio": "160.000 USD",
     "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/3ea881dc-ffa8-40b6-8c4a-cc22bb1da698/360x200/944d4504-d39c-4fe6-b272-f03ae34360da.webp",
     "url": "https://www.remax.com.ar/listings/venta-depto-3-ambientes-doble-balcon-en-palermo"
+  },
+  {
+    "titulo": "VENTA 2 AMBIENTES LUMINOSO SAN CRISTOBAL",
+    "ubicacion": "Constitucion 3100",
+    "precio": "40.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/bcb721a3-4b00-49b4-87c4-0babf1d886e0/360x200/a0c36b2d-e515-416f-81c1-c60a10285bce.webp",
+    "url": "https://www.remax.com.ar/listings/venta-2-ambientes-luminoso-san-cristobal"
+  },
+  {
+    "titulo": "VENTA DPTO 2 AMBIENTES LUMINOSO ZONA CONGRESO",
+    "ubicacion": "Sarandi 0",
+    "precio": "69.900 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/88fea82e-dbe8-4025-a5ee-04df0f76dc4b/360x200/79197e22-95c0-4dac-9cd1-e23bd68905ad.webp",
+    "url": "https://www.remax.com.ar/listings/venta-dpto-2-ambientes-luminoso-zona-congreso"
+  },
+  {
+    "titulo": "VENTA DPTO 4 AMBIENTES PALERMO BALCON SEG24HS",
+    "ubicacion": "Av. Luis Maria Campos 1000",
+    "precio": "239.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/719d307a-8d76-4ccc-bf28-39e2be16e67b/360x200/5701ee36-6fd5-4ed0-883c-c1bafac7cfa7.webp",
+    "url": "https://www.remax.com.ar/listings/venta-dpto-4-ambientes-palermo-balcon-seg24hs"
+  },
+  {
+    "titulo": "VENTA DPTO 2 AMB AL FRENTE COCHERA BAULERA FLORES",
+    "ubicacion": "Jose Marti 100",
+    "precio": "90.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/1fc12cdf-7ef8-4796-871e-d89f7ef1a5a5/360x200/53a2c38d-835e-4b7e-8474-02d6c8c653bd.webp",
+    "url": "https://www.remax.com.ar/listings/venta-dpto-2-amb-al-frente-cochera-baulera-flores"
+  },
+  {
+    "titulo": "VENTA LOTE SAN MIGUEL 382m2 AV P. PERON ZONA HOSP.",
+    "ubicacion": "Av. Presidente Peron 2300",
+    "precio": "209.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/3fcf83ab-1e40-4352-92e7-7316791361c6/360x200/9b12d386-f649-4274-b520-4909c0bf9223.webp",
+    "url": "https://www.remax.com.ar/listings/venta-lote-san-miguel-382m2-av-p-peron-zona-hosp"
+  },
+  {
+    "titulo": "VENTA LOTE VILLA LURO USAB 1 ESTUDIO DE PREFAC",
+    "ubicacion": "Moliere 1000",
+    "precio": "185.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/41e5276d-823f-4363-b7fc-f1c7fa3291f7/360x200/b4bf8b90-6b76-466c-821d-dc64ce1a6ecc.webp",
+    "url": "https://www.remax.com.ar/listings/venta-lote-villa-luro-usab-1-estudio-de-prefac"
+  },
+  {
+    "titulo": "VENTA CASA 4 AMB BIBLIOTECA TERRAZA PARRILLA PATI",
+    "ubicacion": "Santiago de Las Carreras 300",
+    "precio": "205.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/bbb9c8e8-fe7c-4d79-8b01-df1927330331/360x200/f81cb33e-0f26-4ad7-8ed7-e8b098579466.webp",
+    "url": "https://www.remax.com.ar/listings/venta-casa-4-amb-biblioteca-terraza-parrilla-pati"
+  },
+  {
+    "titulo": "VENTA PH 4 AMBIENTES CON COCHERA QUILMES OESTE",
+    "ubicacion": "Irala 4400",
+    "precio": "65.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/ec1ae740-16e0-4104-b185-2e6218c20cb2/360x200/ac649b88-0fde-4f4a-b5b7-45b66f7a5983.webp",
+    "url": "https://www.remax.com.ar/listings/venta-ph-4-ambientes-con-cochera-quilmes-oeste"
   }
 ]
