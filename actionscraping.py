@@ -1,4 +1,4 @@
-#v7 from GC debugging
+#v10 from debugging
 
 import json
 import os
@@ -47,12 +47,11 @@ while True:
     current_count = len(cards)
     
     try:
-        # Wait for the view more container
-        wait.until(EC.presence_of_element_located((By.ID, "properties-view-more")))
-        view_more_div = driver.find_element(By.ID, "properties-view-more")
-        
-        # Find qr-button inside
-        qr_button = view_more_div.find_element(By.TAG_NAME, "qr-button")
+        # Find the view more button by ID
+        qr_buttons = driver.find_elements(By.ID, "view-more")
+        if not qr_buttons:
+            break
+        qr_button = qr_buttons[0]
         
         # Find the button inside qr-button
         real_button = qr_button.find_element(By.TAG_NAME, "button")
@@ -77,4 +76,32 @@ cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
 print(f"✅ Se detectaron {len(cards)} propiedades")
 
 properties = []
-for card
+for card in cards:
+    try:
+        title = card.find_element(By.CSS_SELECTOR, "p.card__description").text
+        location = card.find_element(By.CSS_SELECTOR, "p.card__address").text
+        price = card.find_element(By.CSS_SELECTOR, "p.card__price").text
+
+        image_elem = card.find_elements(By.CSS_SELECTOR, "img.carousel__slide")
+        image_url = image_elem[0].get_attribute("src") if image_elem else ""
+
+        link_elem = card.find_element(By.CSS_SELECTOR, "a.card-remax__href")
+        url = link_elem.get_attribute("href") if link_elem else ""
+
+        properties.append({
+            "titulo": title,
+            "ubicacion": location,
+            "precio": price,
+            "imagen": image_url,
+            "url": url
+        })
+    except Exception as e:
+        print(f"⚠️ Error en una tarjeta: {e}")
+
+# Guardar JSON
+os.makedirs("docs/data", exist_ok=True)
+with open("docs/data/propiedades.json", "w", encoding="utf-8") as f:
+    json.dump(properties, f, ensure_ascii=False, indent=2)
+
+driver.quit()
+print(f"✅ Scraping completo. {len(properties)} propiedades guardadas en docs/data/propiedades.json")
