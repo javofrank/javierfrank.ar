@@ -1,85 +1,85 @@
 import json
 import os
-from playwright.sync_api import sync_playwright
+import time
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
-OUTPUT_PATH = "web/data/propiedades.json"
-TARGET_URL = "https://www.remax.com.ar/agent/javier-frank"
+# Configurar navegador Chrome
+options = Options()
+# options.add_argument('--headless=new')  # descomentar para headless
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+options.add_argument('--disable-blink-features=AutomationControlled')
 
+service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service, options=options)
+wait = WebDriverWait(driver, 15)
 
-def scrape():
-    with sync_playwright() as p:
-        browser = p.chromium.launch(
-            headless=False,  # visible browser for local debugging
-            args=[
-                "--no-sandbox",
-                "--disable-dev-shm-usage",
-                "--disable-blink-features=AutomationControlled",
-            ],
-        )
-        context = browser.new_context(viewport={"width": 1920, "height": 1080})
-        page = context.new_page()
+# Ir a la página del agente
+driver.get("https://www.remax.com.ar/agent/javier-frank")
+time.sleep(2)
 
-        page.goto(TARGET_URL)
-        page.wait_for_timeout(2000)
+# Clic en "Ver más" hasta que desaparezca o ya no cargue más propiedades
+last_count = 0
+while True:
+    try:
+        cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
+        current_count = len(cards)
 
-        # Click "Ver más" until it disappears or no new cards load
-        while True:
-            cards = page.query_selector_all(".card-remax.viewGrid")
-            current_count = len(cards)
+        qr_button = driver.find_element(By.ID, "view-more")
+        real_button = qr_button.find_element(By.TAG_NAME, "button")
 
-            view_more = page.query_selector("#view-more")
-            if not view_more:
-                break
+        if not real_button.is_displayed():
+            break
 
-            button = view_more.query_selector("button")
-            if not button or not button.is_visible():
-                break
+        driver.execute_script("arguments[0].scrollIntoView(true);", real_button)
+        time.sleep(0.5)
+        driver.execute_script("arguments[0].click();", real_button)
+        time.sleep(3)  # esperar a que se cargue el nuevo lote
 
-            button.scroll_into_view_if_needed()
-            page.wait_for_timeout(500)
-            button.click()
-            page.wait_for_timeout(3000)
+        cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
+        if len(cards) == current_count:
+            break  # si no crecieron, salir
+    except Exception as e:
+        print("⚠️ No se puede hacer clic en 'Ver más':", e)
+        break
 
-            cards = page.query_selector_all(".card-remax.viewGrid")
-            if len(cards) == current_count:
-                break
+# Extraer info del DOM
+cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
+print(f"✅ Se detectaron {len(cards)} propiedades")
 
-        # Extract data
-        cards = page.query_selector_all(".card-remax.viewGrid")
-        print(f"✅ Se detectaron {len(cards)} propiedades")
+properties = []
+for card in cards:
+    try:
+        title = card.find_element(By.CSS_SELECTOR, "p.card__description").text
+        location = card.find_element(By.CSS_SELECTOR, "p.card__address").text
+        price = card.find_element(By.CSS_SELECTOR, "p.card__price").text
 
-        properties = []
-        for card in cards:
-            try:
-                title = card.query_selector("p.card__description").inner_text()
-                location = card.query_selector("p.card__address").inner_text()
-                price = card.query_selector("p.card__price").inner_text()
+        image_elem = card.find_elements(By.CSS_SELECTOR, "img.carousel__slide")
+        image_url = image_elem[0].get_attribute("src") if image_elem else ""
 
-                images = card.query_selector_all("img.carousel__slide")
-                image_url = images[0].get_attribute("src") if images else ""
+        link_elem = card.find_element(By.CSS_SELECTOR, "a.card-remax__href")
+        url = link_elem.get_attribute("href") if link_elem else ""
 
-                link = card.query_selector("a.card-remax__href")
-                url = link.get_attribute("href") if link else ""
+        properties.append({
+            "titulo": title,
+            "ubicacion": location,
+            "precio": price,
+            "imagen": image_url,
+            "url": url
+        })
+    except Exception as e:
+        print(f"⚠️ Error en una tarjeta: {e}")
 
-                properties.append({
-                    "titulo": title,
-                    "ubicacion": location,
-                    "precio": price,
-                    "imagen": image_url,
-                    "url": url,
-                })
-            except Exception as e:
-                print(f"⚠️ Error en una tarjeta: {e}")
+# Guardar JSON
+os.makedirs("data", exist_ok=True)
+with open("web/data/propiedades.json", "w", encoding="utf-8") as f:
+    json.dump(properties, f, ensure_ascii=False, indent=2)
 
-        # Save JSON
-        os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-        with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-            json.dump(properties, f, ensure_ascii=False, indent=2)
-
-        browser.close()
-
-    print(f"✅ Scraping completo. {len(properties)} propiedades guardadas en {OUTPUT_PATH}")
-
-
-if __name__ == "__main__":
-    scrape()
+driver.quit()
+print(f"✅ Scraping completo. {len(properties)} propiedades guardadas en data/propiedades.json")
