@@ -30,7 +30,18 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add docs/data/propiedades.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "🔄 Auto-update propiedades.json"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git push
+      
+          git add docs/data/propiedades.json
+      
+          # Exit cleanly if no changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+      
+          git commit -m "🔄 Auto-update propiedades.json"
+      
+          # Sync with latest remote main to avoid non-fast-forward push rejection
+          git pull --rebase origin main
+          git push origin HEAD:main
