@@ -92,18 +92,47 @@ def pick_property_image(driver, url):
 
 # Ir a la página del agente
 driver.get("https://www.remax.com.ar/agent/javier-frank")
-time.sleep(10)
 
-# Esperar contenedor/listado usando selectores legacy + nuevos.
-try:
-    wait.until(lambda d: (
-        len(d.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")) > 0
-        or len(d.find_elements(By.CSS_SELECTOR, "#cards-props")) > 0
-        or len(d.find_elements(By.CSS_SELECTOR, "a[href*='/listings/']")) > 0
-    ))
-except TimeoutException:
+# Esperar carga base del documento
+wait.until(lambda d: d.execute_script("return document.readyState") == "complete")
+
+def find_listing_links(d):
+    selectors = [
+        "a[href*='/listings/']",
+        "a[href*='/propiedades/']",
+        "a[href*='/en/listings/']",
+        "a[href*='/es/listings/']",
+    ]
+    found = []
+    for sel in selectors:
+        found.extend(d.find_elements(By.CSS_SELECTOR, sel))
+    # dedupe by href
+    unique = {}
+    for a in found:
+        href = (a.get_attribute("href") or "").strip()
+        if href:
+            unique[href] = a
+    return list(unique.values())
+
+# Esperar contenedor/listado con estrategia flexible + retry por scroll
+loaded = False
+for _ in range(6):
+    legacy_cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
+    cards_container = driver.find_elements(By.CSS_SELECTOR, "#cards-props")
+    listing_links = find_listing_links(driver)
+
+    if legacy_cards or cards_container or listing_links:
+        loaded = True
+        break
+
+    driver.execute_script("window.scrollBy(0, 700);")
+    time.sleep(1.5)
+
+if not loaded:
     driver.save_screenshot("scrape_error.png")
-    raise RuntimeError("No se pudo detectar el listado de propiedades. DOM posiblemente cambiado.")
+    with open("scrape_error.html", "w", encoding="utf-8") as f:
+        f.write(driver.page_source)
+    raise RuntimeError("No se pudo detectar el listado de propiedades tras reintentos. DOM posiblemente cambiado.")
 
 # Scroll to trigger loading
 for _ in range(3):
