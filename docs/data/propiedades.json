@@ -1,5 +1,19 @@
 [
   {
+    "titulo": "VENTA DEPTO 2 AMBIENTES BALCON TERRAZA PALERMO",
+    "ubicacion": "Paraguay 3800",
+    "precio": "130.000 USD | + 85.000 ARS expensas",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/76795557-37c1-4963-afb3-7dde6199051b/360x200/e5c56b87-5736-46f6-9d3b-e38e06aa4029.webp",
+    "url": "https://www.remax.com.ar/listings/venta-depto-2-ambientes-balcon-terraza-palermo"
+  },
+  {
+    "titulo": "VENTA PH 4 AMB TERRAZA VILLA CRESPO LUMINOSO",
+    "ubicacion": "Avenida Juan Bautista Justo 2900",
+    "precio": "130.000 USD",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/0491c6b9-e29a-478b-b6db-b6a1fd9ffce5/360x200/43b164e5-a81f-4a0b-81cb-547ef763c506.webp",
+    "url": "https://www.remax.com.ar/listings/venta-ph-4-amb-terraza-villa-crespo-luminoso"
+  },
+  {
     "titulo": "ALQUILER MONOAMBIENTE AMOBLADO PALERMO X ESCALERA",
     "ubicacion": "Av Luis Maria Campos 1200",
     "precio": "500 USD | + 72.901 ARS expensas",
@@ -16,7 +30,7 @@
   {
     "titulo": "VENTA DEPTO 3 AMBIENTES DOBLE BALCON EN BELGRANO",
     "ubicacion": "Avenida Luis María Campos 1300",
-    "precio": "160.000 USD | + 336.180 ARS expensas",
+    "precio": "155.000 USD | + 336.180 ARS expensas",
     "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/d60609bb-5365-4248-a895-fc359930b513/360x200/fbc7c2c6-5849-4f5f-bd8d-e924beef6c86.webp",
     "url": "https://www.remax.com.ar/listings/venta-depto-3-ambientes-doble-balcon-en-belgrano"
   },
