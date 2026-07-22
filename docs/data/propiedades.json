@@ -1,5 +1,12 @@
 [
   {
+    "titulo": "VENTA DPTO 2 AMB COCHERA BALCON LUMINOSO",
+    "ubicacion": "Culpina 500",
+    "precio": "95.000 USD | + 167.415 ARS expensas",
+    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/b34c8d9b-68e1-42e0-99c3-9978d672d590/360x200/a748a9a2-5ff9-4a15-812d-41409604e9c5.webp",
+    "url": "https://www.remax.com.ar/listings/venta-dpto-2-amb-cochera-balcon-luminoso"
+  },
+  {
     "titulo": "VENTA CASA 4 AMBIENTES COCHERA QUILMES APTO CRED",
     "ubicacion": "Condarco 2100",
     "precio": "90.000 USD",
@@ -26,13 +33,6 @@
     "precio": "130.000 USD",
     "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/0491c6b9-e29a-478b-b6db-b6a1fd9ffce5/360x200/43b164e5-a81f-4a0b-81cb-547ef763c506.webp",
     "url": "https://www.remax.com.ar/listings/venta-ph-4-amb-terraza-villa-crespo-luminoso"
-  },
-  {
-    "titulo": "ALQUILER MONOAMBIENTE AMOBLADO PALERMO X ESCALERA",
-    "ubicacion": "Av Luis Maria Campos 1200",
-    "precio": "500 USD | + 72.901 ARS expensas",
-    "imagen": "https://d1acdg20u0pmxj.cloudfront.net/listings/a1ce5cd2-078b-4dfb-bf09-14d852dd1bfd/360x200/d9a2335b-bd70-424e-9e69-236ff8f8446d.webp",
-    "url": "https://www.remax.com.ar/listings/alquiler-monoambiente-amoblado-palermo-x-escalera"
   },
   {
     "titulo": "VENTA DPTO 2 AMBIENTES LUMINOSO ZONA CONGRESO",
