@@ -1,410 +1,963 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<title>Javier Frank | RE/MAX | Propiedades en Buenos Aires</title>
-<meta name="description" content="Agente inmobiliario en RE/MAX Amazing Buenos Aires. Venta, alquiler y asesoramiento en propiedades. Encontrá tu próxima inversión con Javier Frank.">
-<meta name="keywords" content="Javier Frank, propiedades Buenos Aires, RE/MAX, real estate Argentina, agente inmobiliario, casas en venta, departamentos en alquiler, real estate Buenos Aires">
-<meta name="author" content="Javier Frank" />
-<meta name="language" content="es" />
-<link rel="canonical" href="https://javierfrank.ar/" />
+  <title>Javier Frank | RE/MAX | Propiedades en Buenos Aires</title>
+  <meta name="description"
+    content="Agente inmobiliario en RE/MAX Amazing Buenos Aires. Venta, alquiler y asesoramiento en propiedades. Encontrá tu próxima inversión con Javier Frank.">
+  <meta name="keywords"
+    content="Javier Frank, propiedades Buenos Aires, RE/MAX, real estate Argentina, agente inmobiliario, casas en venta, departamentos en alquiler, real estate Buenos Aires">
+  <meta name="author" content="Javier Frank" />
+  <meta name="language" content="es" />
+  <link rel="canonical" href="https://javierfrank.ar/" />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:title" content="Javier Frank | Agente Inmobiliario RE/MAX" />
-<meta property="og:description" content="Agente inmobiliario en RE/MAX Buenos Aires. Venta y alquiler de propiedades. Asesoramiento personalizado." />
-<meta property="og:image" content="https://javierfrank.ar/img/imagen-de-portada.jpg" />
-<meta property="og:url" content="https://javierfrank.ar" />
-<meta property="og:type" content="website" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Javier Frank | Agente Inmobiliario RE/MAX" />
+  <meta property="og:description"
+    content="Agente inmobiliario en RE/MAX Buenos Aires. Venta y alquiler de propiedades. Asesoramiento personalizado." />
+  <meta property="og:image" content="https://javierfrank.ar/img/imagen-de-portada.jpg" />
+  <meta property="og:url" content="https://javierfrank.ar" />
+  <meta property="og:type" content="website" />
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Javier Frank | Agente Inmobiliario RE/MAX" />
-<meta name="twitter:description" content="Asesor inmobiliario RE/MAX. Venta y alquiler de propiedades en Buenos Aires. Atención personalizada." />
-<meta name="twitter:image" content="https://javierfrank.ar/img/imagen-de-portada.jpg" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Javier Frank | Agente Inmobiliario RE/MAX" />
+  <meta name="twitter:description"
+    content="Asesor inmobiliario RE/MAX. Venta y alquiler de propiedades en Buenos Aires. Atención personalizada." />
+  <meta name="twitter:image" content="https://javierfrank.ar/img/imagen-de-portada.jpg" />
 
-<link rel="stylesheet" href="fontawesome-5.5/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fontawesome-5.5/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-  :root{
-    --navy:#0e1f33;
-    --navy-2:#132a44;
-    --red:#e2231a;
-    --red-dark:#b81a13;
-    --ink:#16202b;
-    --muted:#5b6b7c;
-    --bg:#ffffff;
-    --bg-alt:#f5f7fa;
-    --line:rgba(14,31,51,0.08);
-    --radius:18px;
-    --shadow:0 10px 30px -12px rgba(14,31,51,0.18);
-    --font:'Manrope',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:var(--font);
-    color:var(--ink);
-    background:var(--bg);
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%;display:block;}
-  a{color:inherit;text-decoration:none;}
-  .container{width:100%;max-width:1140px;margin:0 auto;padding:0 24px;}
-  section{padding:96px 0;}
-  h1,h2,h3{margin:0;line-height:1.15;font-weight:800;}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--red);margin-bottom:14px;
-  }
-  .eyebrow::before{content:"";width:22px;height:2px;background:var(--red);display:inline-block;}
-  .section-title{font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:16px;}
-  .section-desc{color:var(--muted);font-size:1.05rem;max-width:640px;line-height:1.6;}
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:14px 26px;border-radius:999px;font-weight:700;font-size:.95rem;
-    border:2px solid transparent;cursor:pointer;transition:all .2s ease;
-  }
-  .btn-primary{background:var(--red);color:#fff;}
-  .btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);}
-  .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff;}
-  .btn-ghost:hover{background:rgba(255,255,255,.12);}
-  .btn-outline{border-color:var(--line);color:var(--navy);}
-  .btn-outline:hover{border-color:var(--red);color:var(--red);}
-
-  /* Nav */
-  header{
-    position:sticky;top:0;z-index:50;
-    padding:18px 0;transition:all .25s ease;
-    background:transparent;
-  }
-  header.scrolled{
-    background:rgba(255,255,255,.85);backdrop-filter:blur(12px);
-    box-shadow:0 1px 0 var(--line);padding:12px 0;
-  }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;color:#fff;}
-  header.scrolled .brand{color:var(--navy);}
-  .brand span.tag{color:var(--red);}
-  .nav-links{display:flex;gap:34px;align-items:center;}
-  .nav-links a{font-weight:600;font-size:.92rem;color:#fff;opacity:.9;}
-  header.scrolled .nav-links a{color:var(--navy);}
-  .nav-links a:hover{color:var(--red);opacity:1;}
-  .nav-cta{padding:10px 20px;font-size:.85rem;}
-  .nav-toggle{display:none;background:none;border:0;font-size:1.4rem;color:#fff;cursor:pointer;}
-  header.scrolled .nav-toggle{color:var(--navy);}
-
-  /* Hero */
-  .hero{
-    position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;
-    background:linear-gradient(180deg,rgba(11,25,43,.55),rgba(11,25,43,.85)),
-      url('img/buenos-aires.jpg') center/cover no-repeat;
-    color:#fff;margin-top:-88px;padding-top:88px;
-  }
-  .hero-inner{max-width:640px;}
-  .hero-kicker{
-    display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);
-    border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:999px;
-    font-size:.82rem;font-weight:600;margin-bottom:24px;
-  }
-  .hero-kicker img{height:20px;width:auto;}
-  .hero h1{font-size:clamp(2.4rem,5vw,3.6rem);margin-bottom:20px;}
-  .hero h1 em{font-style:normal;color:#ffb3ae;}
-  .hero p{font-size:1.1rem;color:rgba(255,255,255,.85);max-width:520px;margin-bottom:36px;line-height:1.65;}
-  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
-  .hero-stats{
-    display:flex;gap:40px;margin-top:64px;padding-top:32px;border-top:1px solid rgba(255,255,255,.2);
-    flex-wrap:wrap;
-  }
-  .hero-stats div strong{display:block;font-size:1.6rem;font-weight:800;}
-  .hero-stats div span{font-size:.82rem;color:rgba(255,255,255,.7);}
-
-  /* Servicios */
-  #servicios{background:var(--bg);}
-  .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:center;margin-bottom:80px;}
-  .about-photo{position:relative;}
-  .about-photo img{border-radius:24px;box-shadow:var(--shadow);width:100%;object-fit:cover;aspect-ratio:4/5;}
-  .about-photo .badge-remax{
-    position:absolute;bottom:-24px;right:-24px;background:#fff;border-radius:16px;
-    box-shadow:var(--shadow);padding:14px 18px;display:flex;align-items:center;gap:10px;
-  }
-  .about-photo .badge-remax img{height:34px;width:auto;box-shadow:none;border-radius:0;}
-  .about-text p{color:var(--muted);font-size:1.05rem;line-height:1.75;margin:0 0 18px;}
-  .about-text b{color:var(--ink);}
-
-  .cards-3{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
-  .service-card{
-    background:var(--bg-alt);border-radius:var(--radius);padding:34px;
-    border:1px solid var(--line);transition:all .2s ease;
-  }
-  .service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent;}
-  .service-icon{
-    width:52px;height:52px;border-radius:14px;background:var(--navy);color:#fff;
-    display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:20px;
-  }
-  .service-card h3{font-size:1.2rem;margin-bottom:10px;}
-  .service-card p{color:var(--muted);line-height:1.65;margin:0;font-size:.96rem;}
-
-  .disclaimer{
-    margin-top:56px;background:var(--bg-alt);border:1px solid var(--line);border-radius:14px;
-    padding:18px 22px;color:var(--muted);font-size:.82rem;line-height:1.6;
-  }
-  .disclaimer b{color:var(--ink);}
-
-  /* Propiedades */
-  #propiedades-section{background:var(--bg-alt);}
-  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:48px;}
-  .prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
-  .prop-card{
-    background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
-    transition:all .25s ease;display:flex;flex-direction:column;
-  }
-  .prop-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
-  .prop-media{position:relative;aspect-ratio:16/10;overflow:hidden;background:#e7ecf1;}
-  .prop-media img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
-  .prop-card:hover .prop-media img{transform:scale(1.06);}
-  .prop-tag{
-    position:absolute;top:14px;left:14px;padding:6px 14px;border-radius:999px;
-    font-size:.72rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:#fff;
-  }
-  .prop-tag.venta{background:var(--red);}
-  .prop-tag.alquiler{background:var(--navy);}
-  .prop-body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1;}
-  .prop-body h3{font-size:1rem;line-height:1.4;font-weight:700;min-height:2.8em;}
-  .prop-loc{color:var(--muted);font-size:.86rem;display:flex;align-items:center;gap:6px;}
-  .prop-price{font-size:1.05rem;font-weight:800;color:var(--navy);margin-top:auto;}
-  .prop-cta{
-    margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    padding:11px;border-radius:10px;background:var(--bg-alt);color:var(--ink);font-weight:700;font-size:.86rem;
-    border:1px solid var(--line);
-  }
-  .prop-card:hover .prop-cta{background:var(--navy);color:#fff;border-color:var(--navy);}
-  .prop-skeleton{
-    background:linear-gradient(90deg,#eef1f4 25%,#e4e9ee 37%,#eef1f4 63%);
-    background-size:400% 100%;animation:shimmer 1.4s ease infinite;border-radius:var(--radius);
-    aspect-ratio:16/13;
-  }
-  @keyframes shimmer{0%{background-position:100% 0;}100%{background-position:0 0;}}
-
-  /* Contacto */
-  #contacto{
-    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;
-  }
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
-  #contacto .eyebrow{color:#ffb3ae;}
-  #contacto .eyebrow::before{background:#ffb3ae;}
-  #contacto .section-desc{color:rgba(255,255,255,.72);}
-  .contact-list{display:flex;flex-direction:column;gap:16px;margin-top:32px;}
-  .contact-item{
-    display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:16px;
-    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);transition:all .2s ease;
-  }
-  .contact-item:hover{background:rgba(255,255,255,.12);transform:translateX(4px);}
-  .contact-item i{
-    width:44px;height:44px;border-radius:12px;background:var(--red);color:#fff;
-    display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.05rem;
-  }
-  .contact-item strong{display:block;font-size:.95rem;}
-  .contact-item span{display:block;font-size:.84rem;color:rgba(255,255,255,.65);}
-  .contact-card{
-    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:24px;
-    padding:44px;text-align:center;
-  }
-  .contact-card img{height:64px;width:auto;margin:0 auto 20px;}
-  .contact-card h3{font-size:1.3rem;margin-bottom:12px;}
-  .contact-card p{color:rgba(255,255,255,.72);font-size:.95rem;line-height:1.6;margin-bottom:28px;}
-  .contact-card .btn{width:100%;justify-content:center;}
-
-  footer{
-    background:var(--navy-2);color:rgba(255,255,255,.55);text-align:center;
-    padding:28px 0;font-size:.8rem;line-height:1.7;
-  }
-  footer a{color:rgba(255,255,255,.75);}
-  footer a:hover{color:#fff;}
-
-  @media (max-width:900px){
-    .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px;}
-    .cards-3{grid-template-columns:1fr;}
-    .prop-grid{grid-template-columns:repeat(2,1fr);}
-    .about-photo .badge-remax{right:12px;}
-  }
-  @media (max-width:680px){
-    section{padding:64px 0;}
-    .nav-links{
-      position:fixed;inset:0 0 0 30%;top:0;background:#fff;flex-direction:column;
-      justify-content:center;align-items:flex-start;padding:0 32px;gap:28px;
-      transform:translateX(100%);transition:transform .3s ease;box-shadow:-10px 0 30px rgba(0,0,0,.15);
+  <style>
+    :root {
+      --navy: #0e1f33;
+      --navy-2: #132a44;
+      --red: #e2231a;
+      --red-dark: #b81a13;
+      --ink: #16202b;
+      --muted: #5b6b7c;
+      --bg: #ffffff;
+      --bg-alt: #f5f7fa;
+      --line: rgba(14, 31, 51, 0.08);
+      --radius: 18px;
+      --shadow: 0 10px 30px -12px rgba(14, 31, 51, 0.18);
+      --font: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    .nav-links.open{transform:translateX(0);}
-    .nav-links a{color:var(--navy)!important;font-size:1.1rem;}
-    .nav-toggle{display:block;}
-    .nav-cta{display:none;}
-    .prop-grid{grid-template-columns:1fr;}
-    .hero-stats{gap:28px;}
-  }
-</style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.15;
+      font-weight: 800;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: var(--red);
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 640px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .95rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      border-color: rgba(255, 255, 255, .5);
+      color: #fff;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .btn-outline {
+      border-color: var(--line);
+      color: var(--navy);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    /* Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 18px 0;
+      transition: all .25s ease;
+      background: transparent;
+    }
+
+    header.scrolled {
+      background: rgba(255, 255, 255, .85);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--line);
+      padding: 12px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #fff;
+    }
+
+    header.scrolled .brand {
+      color: var(--navy);
+    }
+
+    .brand span.tag {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      font-size: .92rem;
+      color: #fff;
+      opacity: .9;
+    }
+
+    header.scrolled .nav-links a {
+      color: var(--navy);
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+      opacity: 1;
+    }
+
+    .nav-cta {
+      padding: 10px 20px;
+      font-size: .85rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      font-size: 1.4rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    header.scrolled .nav-toggle {
+      color: var(--navy);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(11, 25, 43, .55), rgba(11, 25, 43, .85)),
+        url('img/buenos-aires.jpg') center/cover no-repeat;
+      color: #fff;
+      margin-top: -88px;
+      padding-top: 88px;
+    }
+
+    .hero-inner {
+      max-width: 640px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .25);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero-kicker img {
+      height: 20px;
+      width: auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: #ffb3ae;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, .85);
+      max-width: 520px;
+      margin-bottom: 36px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, .2);
+      flex-wrap: wrap;
+    }
+
+    .hero-stats div strong {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
+    .hero-stats div span {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .7);
+    }
+
+    /* Servicios */
+    #servicios {
+      background: var(--bg);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .about-photo {
+      position: relative;
+    }
+
+    .about-photo img {
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+    }
+
+    .about-photo .badge-remax {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .about-photo .badge-remax img {
+      height: 34px;
+      width: auto;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin: 0 0 18px;
+    }
+
+    .about-text b {
+      color: var(--ink);
+    }
+
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .service-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      padding: 34px;
+      border: 1px solid var(--line);
+      transition: all .2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: transparent;
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--navy);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0;
+      font-size: .96rem;
+    }
+
+    .disclaimer {
+      margin-top: 56px;
+      background: var(--bg-alt);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px 22px;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.6;
+    }
+
+    .disclaimer b {
+      color: var(--ink);
+    }
+
+    /* Propiedades */
+    #propiedades-section {
+      background: var(--bg-alt);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .prop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .prop-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      transition: all .25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .prop-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .prop-media {
+      position: relative;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: #e7ecf1;
+    }
+
+    .prop-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+
+    .prop-card:hover .prop-media img {
+      transform: scale(1.06);
+    }
+
+    .prop-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .prop-tag.venta {
+      background: var(--red);
+    }
+
+    .prop-tag.alquiler {
+      background: var(--navy);
+    }
+
+    .prop-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .prop-body h3 {
+      font-size: 1rem;
+      line-height: 1.4;
+      font-weight: 700;
+      min-height: 2.8em;
+    }
+
+    .prop-loc {
+      color: var(--muted);
+      font-size: .86rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .prop-price {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-top: auto;
+    }
+
+    .prop-cta {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px;
+      border-radius: 10px;
+      background: var(--bg-alt);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: .86rem;
+      border: 1px solid var(--line);
+    }
+
+    .prop-card:hover .prop-cta {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+
+    .prop-skeleton {
+      background: linear-gradient(90deg, #eef1f4 25%, #e4e9ee 37%, #eef1f4 63%);
+      background-size: 400% 100%;
+      animation: shimmer 1.4s ease infinite;
+      border-radius: var(--radius);
+      aspect-ratio: 16/13;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 100% 0;
+      }
+
+      100% {
+        background-position: 0 0;
+      }
+    }
+
+    /* Contacto */
+    #contacto {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+      color: #fff;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    #contacto .eyebrow {
+      color: #ffb3ae;
+    }
+
+    #contacto .eyebrow::before {
+      background: #ffb3ae;
+    }
+
+    #contacto .section-desc {
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .12);
+      transition: all .2s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(255, 255, 255, .12);
+      transform: translateX(4px);
+    }
+
+    .contact-item i {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--red);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.05rem;
+    }
+
+    .contact-item strong {
+      display: block;
+      font-size: .95rem;
+    }
+
+    .contact-item span {
+      display: block;
+      font-size: .84rem;
+      color: rgba(255, 255, 255, .65);
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 24px;
+      padding: 44px;
+      text-align: center;
+    }
+
+    .contact-card img {
+      height: 64px;
+      width: auto;
+      margin: 0 auto 20px;
+    }
+
+    .contact-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      color: rgba(255, 255, 255, .72);
+      font-size: .95rem;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .contact-card .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    footer {
+      background: var(--navy-2);
+      color: rgba(255, 255, 255, .55);
+      text-align: center;
+      padding: 28px 0;
+      font-size: .8rem;
+      line-height: 1.7;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, .75);
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    @media (max-width:900px) {
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .cards-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .prop-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-photo .badge-remax {
+        right: 12px;
+      }
+    }
+
+    @media (max-width:680px) {
+      section {
+        padding: 64px 0;
+      }
+
+      .nav-links {
+        position: fixed;
+        inset: 0 0 0 30%;
+        top: 0;
+        background: #fff;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0 32px;
+        gap: 28px;
+        transform: translateX(100%);
+        transition: transform .3s ease;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, .15);
+      }
+
+      .nav-links.open {
+        transform: translateX(0);
+      }
+
+      .nav-links a {
+        color: var(--navy) !important;
+        font-size: 1.1rem;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .prop-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        gap: 28px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header id="siteHeader">
-  <div class="container nav-inner">
-    <a href="#inicio" class="brand">Javier Frank <span class="tag">| RE/MAX</span></a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#servicios">Servicios</a>
-      <a href="#propiedades-section">Propiedades</a>
-      <a href="#contacto">Contacto</a>
-      <a href="#contacto" class="btn btn-primary nav-cta">Contactar</a>
-    </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
-  </div>
-</header>
-
-<section id="inicio" class="hero">
-  <div class="container hero-inner">
-    <div class="hero-kicker"><img src="img/remax-balloon-2026.png" alt="RE/MAX" /> RE/MAX Amazing · Buenos Aires</div>
-    <h1>Encontrá tu próxima propiedad <em>con estrategia</em>.</h1>
-    <p>Compra, venta, tasación y asesoramiento inmobiliario personalizado en Buenos Aires. Te acompaño en cada etapa, con transparencia y el respaldo de una de las redes más reconocidas del mercado.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" rel="nofollow" href="https://wa.me/+5491133782524?text=Hola,%20quisiera%20que%20me%20contactes%20para%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20algunas%20de%20tus%20propiedades%20disponibles"><i class="fab fa-whatsapp"></i> Escribime por WhatsApp</a>
-      <a class="btn btn-ghost" href="#propiedades-section">Ver propiedades <i class="fas fa-arrow-right"></i></a>
+  <header id="siteHeader">
+    <div class="container nav-inner">
+      <a href="#inicio" class="brand">Javier Frank <span class="tag">| RE/MAX</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#servicios">Servicios</a>
+        <a href="#propiedades-section">Propiedades</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#contacto" class="btn btn-primary nav-cta">Contactar</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
     </div>
-    <div class="hero-stats">
-      <div><strong>+10</strong><span>Propiedades activas</span></div>
-      <div><strong>RE/MAX</strong><span>Amazing Buenos Aires</span></div>
-      <div><strong>100%</strong><span>Asesoramiento personalizado</span></div>
-    </div>
-  </div>
-</section>
+  </header>
 
-<section id="servicios">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-photo">
-        <img src="img/fotojfconfondo.jpg" alt="Javier Frank" />
-        <div class="badge-remax"><img src="img/remax-balloon-2026.png" alt="RE/MAX" /></div>
+  <section id="inicio" class="hero">
+    <div class="container hero-inner">
+      <div class="hero-kicker"><img src="img/remax-balloon-2026.png" alt="RE/MAX" /> RE/MAX Amazing · Buenos Aires</div>
+      <h1>Encontrá tu próxima propiedad <em>con estrategia</em>.</h1>
+      <p>Compra, venta, tasación y asesoramiento inmobiliario personalizado en Buenos Aires. Te acompañamos en cada
+        etapa, con transparencia y el respaldo de una de las redes más reconocidas del mercado.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" rel="nofollow"
+          href="https://wa.me/+5491133782524?text=Hola,%20quisiera%20que%20me%20contacten%20para%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20algunas%20de%20sus%20propiedades%20disponibles"><i
+            class="fab fa-whatsapp"></i> Escribinos por WhatsApp</a>
+        <a class="btn btn-ghost" href="#propiedades-section">Ver propiedades <i class="fas fa-arrow-right"></i></a>
       </div>
-      <div class="about-text">
-        <div class="eyebrow">Sobre mí</div>
-        <h2 class="section-title">Asesoramiento inmobiliario cercano y profesional</h2>
-        <p>Soy <b>Javier Frank, agente inmobiliario</b> con base en Buenos Aires y desde <b>RE/MAX Amazing</b> brindamos servicios personalizados de compra, venta, tasación y asesoramiento inmobiliario.</p>
-        <p>Acompaño a cada cliente en cada etapa del proceso, con transparencia, compromiso y el respaldo de una de las redes más reconocidas del mercado. Ya sea que estés buscando tu nuevo hogar o querés vender con estrategia, estoy para ayudarte a tomar decisiones seguras y bien fundamentadas.</p>
+      <div class="hero-stats">
+        <div><strong>+10</strong><span>Propiedades activas</span></div>
+        <div><strong>RE/MAX</strong><span>Amazing Buenos Aires</span></div>
+        <div><strong>100%</strong><span>Asesoramiento personalizado</span></div>
       </div>
     </div>
+  </section>
 
-    <div class="cards-3">
-      <div class="service-card">
-        <div class="service-icon"><i class="far fa-chart-bar"></i></div>
-        <h3>Análisis de Mercado</h3>
-        <p>Realizo <b>Análisis Comparativos de Mercado (ACM)</b> con datos de RE/MAX, Reporte Inmobiliario y otras fuentes: una valuación precisa según ubicación, características y contexto actual.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="far fa-comment-alt"></i></div>
-        <h3>Asesoramiento</h3>
-        <p>Asesoramiento en <b>operaciones inmobiliarias e inversiones</b>, analizando cada caso según el perfil del cliente y la proyección de valor, para decisiones seguras y rentables.</p>
-      </div>
-    </div>
-
-    <p class="disclaimer">
-      <b>DISCLAIMER:</b> Los corredores públicos intermedian y concluyen todas las operaciones. Los agentes operan bajo el control y supervisión de un corredor público. Las oficinas son de propiedad y gestión independiente. Daniel Acosta CPI 2406 / CMCPSI 5953
-    </p>
-  </div>
-</section>
-
-<section id="propiedades-section">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">Portfolio</div>
-        <h2 class="section-title">Propiedades disponibles</h2>
-        <p class="section-desc">Algunas de las propiedades en venta y/o alquiler. Si te interesa alguna, escribime. También puedo ayudarte a encontrar la propiedad que buscás.</p>
-      </div>
-      <a class="btn btn-outline" href="https://www.remax.com.ar/" target="_blank" rel="nofollow">Ver todo en RE/MAX <i class="fas fa-arrow-up-right-from-square"></i></a>
-    </div>
-    <div class="prop-grid" id="propGrid">
-      <div class="prop-skeleton"></div>
-      <div class="prop-skeleton"></div>
-      <div class="prop-skeleton"></div>
-    </div>
-  </div>
-</section>
-
-<section id="contacto">
-  <div class="container">
-    <div class="contact-grid">
-      <div>
-        <div class="eyebrow">Contacto</div>
-        <h2 class="section-title">Hablemos de tu próxima operación</h2>
-        <p class="section-desc">Ponete en contacto por cualquier consulta o duda que tengas. Estoy a tu disposición para ayudarte a encontrar la propiedad que buscás.</p>
-        <div class="contact-list">
-          <a class="contact-item" rel="nofollow" href="https://wa.me/+5491133782524?text=Hola,%20quisiera%20que%20me%20contactes%20para%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20algunas%20de%20tus%20propiedades%20disponibles">
-            <i class="fab fa-whatsapp"></i>
-            <span><strong>Javier Frank</strong><span>WhatsApp directo</span></span>
-          </a>
-          <a class="contact-item" rel="nofollow" href="mailto:jfrank@remax.com.ar">
-            <i class="far fa-envelope"></i>
-            <span><strong>jfrank@remax.com.ar</strong><span>Email</span></span>
-          </a>
-          <a class="contact-item" rel="nofollow" href="https://maps.app.goo.gl/1GYpa3WCgmSuHJvSA" target="_blank">
-            <i class="fas fa-map-marker-alt"></i>
-            <span><strong>RE/MAX Amazing</strong><span>Federico Lacroze 2050, C1426CPS, CABA</span></span>
-          </a>
-          <a class="contact-item" rel="nofollow" href="tel:1133782524">
-            <i class="fas fa-phone"></i>
-            <span><strong>+54 11 3378 2524</strong><span>Teléfono</span></span>
-          </a>
+  <section id="servicios">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="img/fotojfconfondo.jpg" alt="Javier Frank" />
+          <div class="badge-remax"><img src="img/remax-balloon-2026.png" alt="RE/MAX" /></div>
+        </div>
+        <div class="about-text">
+          <div class="eyebrow">Sobre mí</div>
+          <h2 class="section-title">Asesoramiento inmobiliario cercano y profesional</h2>
+          <p>Desde <b>RE/MAX Amazing</b>, junto a <b>Javier Frank, agente inmobiliario</b> con base en Buenos Aires,
+            brindamos servicios personalizados de compra, venta, tasación y asesoramiento inmobiliario.</p>
+          <p>Acompañamos a cada cliente en cada etapa del proceso, con transparencia, compromiso y el respaldo de una de
+            las redes más reconocidas del mercado. Ya sea que estés buscando tu nuevo hogar o querés vender con
+            estrategia, estamos para ayudarte a tomar decisiones seguras y bien fundamentadas.</p>
         </div>
       </div>
-      <div class="contact-card">
-        <img src="img/remax-balloon-2026.png" alt="RE/MAX" />
-        <h3>¿Listo para dar el siguiente paso?</h3>
-        <p>Escribime y te respondo a la brevedad para coordinar una consulta sin compromiso.</p>
-        <a class="btn btn-primary" rel="nofollow" href="https://wa.me/+5491133782524?text=Hola,%20quisiera%20que%20me%20contactes%20para%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20algunas%20de%20tus%20propiedades%20disponibles"><i class="fab fa-whatsapp"></i> Escribime por WhatsApp</a>
+
+      <div class="cards-3">
+        <div class="service-card">
+          <div class="service-icon"><i class="far fa-chart-bar"></i></div>
+          <h3>Análisis de Mercado</h3>
+          <p>Realizamos <b>Análisis Comparativos de Mercado (ACM)</b> con datos de RE/MAX, Reporte Inmobiliario y otras
+            fuentes: una valuación precisa según ubicación, características y contexto actual.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="far fa-comment-alt"></i></div>
+          <h3>Asesoramiento</h3>
+          <p>Brindamos asesoramiento en <b>operaciones inmobiliarias e inversiones</b>, analizando cada caso según el
+            perfil del cliente y la proyección de valor, para decisiones seguras y rentables.</p>
+        </div>
+      </div>
+
+      <p class="disclaimer">
+        <b>DISCLAIMER: Daniel Acosta CPI 2406/CSI 5953</b><br />
+        En cumplimiento de la leyes vigentes que de corretaje inmobiliario, Ley 25.028, Ley 22.802 de Lealtad Comercial,
+        Ley 24.240 de Defensa al Consumidor, las normas del Código Civil y Comercial de la Nación y Constitucionales,
+        los agentes NO ejercen el corretaje inmobiliario. Todas las operaciones inmobiliarias son objeto de
+        intermediación y conclusión por parte de los corredores colegiados.<br />
+
+        <b>DISCLAIMER: FOTOS CON IA</b><br />
+        Algunas de las imágenes que componen esta publicación han sido generadas o modificadas mediante Inteligencia
+        Artificial con fines meramente ilustrativos y de amoblamiento/decoración virtual. Las mismas no constituyen una
+        representación exacta ni vinculante del estado actual del inmueble.
+      </p>
+    </div>
+  </section>
+
+  <section id="propiedades-section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Portfolio</div>
+          <h2 class="section-title">Propiedades disponibles</h2>
+          <p class="section-desc">Algunas de las propiedades en venta y/o alquiler. Si te interesa alguna, escribinos.
+            También podemos ayudarte a encontrar la propiedad que buscás.</p>
+        </div>
+        <a class="btn btn-outline" href="https://www.remax.com.ar/" target="_blank" rel="nofollow">Ver todo en RE/MAX <i
+            class="fas fa-arrow-up-right-from-square"></i></a>
+      </div>
+      <div class="prop-grid" id="propGrid">
+        <div class="prop-skeleton"></div>
+        <div class="prop-skeleton"></div>
+        <div class="prop-skeleton"></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="container">
-    Copyright &copy; 2026 Javier Frank. <br>Imagen de portada por <a rel="nofollow" href="https://pixabay.com/users/mampu-404380/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=588387">Claudio Bianchi</a> desde <a rel="nofollow" href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=588387">Pixabay</a>.
-  </div>
-</footer>
+  <section id="contacto">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <div class="eyebrow">Contacto</div>
+          <h2 class="section-title">Hablemos de tu próxima operación</h2>
+          <p class="section-desc">Ponete en contacto por cualquier consulta o duda que tengas. Estamos a tu disposición
+            para ayudarte a encontrar la propiedad que buscás.</p>
+          <div class="contact-list">
+            <a class="contact-item" rel="nofollow"
+              href="https://wa.me/+5491133782524?text=Hola,%20quisiera%20que%20me%20contacten%20para%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20algunas%20de%20sus%20propiedades%20disponibles">
+              <i class="fab fa-whatsapp"></i>
+              <span><strong>Javier Frank</strong><span>WhatsApp directo</span></span>
+            </a>
+            <a class="contact-item" rel="nofollow" href="mailto:jfrank@remax.com.ar">
+              <i class="far fa-envelope"></i>
+              <span><strong>jfrank@remax.com.ar</strong><span>Email</span></span>
+            </a>
+            <a class="contact-item" rel="nofollow" href="https://maps.app.goo.gl/1GYpa3WCgmSuHJvSA" target="_blank">
+              <i class="fas fa-map-marker-alt"></i>
+              <span><strong>RE/MAX Amazing</strong><span>Federico Lacroze 2050, C1426CPS, CABA</span></span>
+            </a>
+            <a class="contact-item" rel="nofollow" href="tel:1133782524">
+              <i class="fas fa-phone"></i>
+              <span><strong>+54 11 3378 2524</strong><span>Teléfono</span></span>
+            </a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <img src="img/remax-balloon-2026.png" alt="RE/MAX" />
+          <h3>¿Listo para dar el siguiente paso?</h3>
+          <p>Escribinos y te respondemos a la brevedad para coordinar una consulta sin compromiso.</p>
+          <a class="btn btn-primary" rel="nofollow"
+            href="https://wa.me/+5491133782524?text=Hola,%20quisiera%20que%20me%20contacten%20para%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20algunas%20de%20sus%20propiedades%20disponibles"><i
+              class="fab fa-whatsapp"></i> Escribinos por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-  // Sticky nav background on scroll
-  const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 40);
-  });
+  <footer>
+    <div class="container">
+      Copyright &copy; 2026 Javier Frank. <br>Imagen de portada por <a rel="nofollow"
+        href="https://pixabay.com/users/mampu-404380/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=588387">Claudio
+        Bianchi</a> desde <a rel="nofollow"
+        href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=588387">Pixabay</a>.
+    </div>
+  </footer>
 
-  // Mobile nav toggle
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  <script>
+    // Sticky nav background on scroll
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
 
-  // Load propiedades from the existing data source
-  const today = new Date().toISOString().split('T')[0];
-  fetch(`data/propiedades.json?v=${today}`)
-    .then(r => r.json())
-    .then(data => {
-      const grid = document.getElementById('propGrid');
-      grid.innerHTML = '';
-      data.forEach(prop => {
-        const isAlquiler = /alquiler/i.test(prop.titulo);
-        const card = document.createElement('a');
-        card.className = 'prop-card';
-        card.href = prop.url;
-        card.target = '_blank';
-        card.rel = 'nofollow noopener';
-        card.innerHTML = `
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // Load propiedades from the existing data source
+    const today = new Date().toISOString().split('T')[0];
+    fetch(`data/propiedades.json?v=${today}`)
+      .then(r => r.json())
+      .then(data => {
+        const grid = document.getElementById('propGrid');
+        grid.innerHTML = '';
+        data.forEach(prop => {
+          const isAlquiler = /alquiler/i.test(prop.titulo);
+          const card = document.createElement('a');
+          card.className = 'prop-card';
+          card.href = prop.url;
+          card.target = '_blank';
+          card.rel = 'nofollow noopener';
+          card.innerHTML = `
           <div class="prop-media">
             <span class="prop-tag ${isAlquiler ? 'alquiler' : 'venta'}">${isAlquiler ? 'Alquiler' : 'Venta'}</span>
             <img src="${prop.imagen}" alt="${prop.titulo}" loading="lazy" draggable="false" />
@@ -415,14 +968,15 @@
             <div class="prop-price">${prop.precio}</div>
             <span class="prop-cta">Ver más <i class="fas fa-arrow-right"></i></span>
           </div>`;
-        grid.appendChild(card);
+          grid.appendChild(card);
+        });
+      })
+      .catch(err => {
+        console.error('Error cargando propiedades:', err);
+        document.getElementById('propGrid').innerHTML = '<p style="color:var(--muted)">No se pudieron cargar las propiedades.</p>';
       });
-    })
-    .catch(err => {
-      console.error('Error cargando propiedades:', err);
-      document.getElementById('propGrid').innerHTML = '<p style="color:var(--muted)">No se pudieron cargar las propiedades.</p>';
-    });
-</script>
+  </script>
 
 </body>
+
 </html>
