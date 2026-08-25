@@ -439,6 +439,21 @@
       margin-bottom: 48px;
     }
 
+    .section-actions,
+    .prop-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+
+    .btn-icon {
+      padding: 14px 18px;
+      font-size: 1.05rem;
+    }
+
     .prop-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
