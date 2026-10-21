@@ -114,25 +114,35 @@ def find_listing_links(d):
             unique[href] = a
     return list(unique.values())
 
-# Esperar contenedor/listado con estrategia flexible + retry por scroll
-loaded = False
-for _ in range(6):
-    legacy_cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
-    cards_container = driver.find_elements(By.CSS_SELECTOR, "#cards-props")
-    listing_links = find_listing_links(driver)
+def listing_loaded(d):
+    legacy_cards = d.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
+    cards_container = d.find_elements(By.CSS_SELECTOR, "#cards-props")
+    if legacy_cards or cards_container or find_listing_links(d):
+        return True
+    d.execute_script("window.scrollBy(0, 700);")
+    return False
 
-    if legacy_cards or cards_container or listing_links:
+# Esperar contenedor/listado con estrategia flexible + retry por scroll (hasta ~60s, recargando una vez)
+loaded = False
+for attempt in range(2):
+    try:
+        WebDriverWait(driver, 30, poll_frequency=1.5).until(listing_loaded)
         loaded = True
         break
-
-    driver.execute_script("window.scrollBy(0, 700);")
-    time.sleep(1.5)
+    except TimeoutException:
+        print(f"⚠️ Listado no detectado (intento {attempt + 1}), recargando...")
+        driver.refresh()
 
 if not loaded:
     driver.save_screenshot("scrape_error.png")
     with open("scrape_error.html", "w", encoding="utf-8") as f:
         f.write(driver.page_source)
-    raise RuntimeError("No se pudo detectar el listado de propiedades tras reintentos. DOM posiblemente cambiado.")
+    body_text = driver.execute_script("return document.body ? document.body.innerText : ''") or ""
+    print(f"ℹ️ URL actual: {driver.current_url}")
+    print(f"ℹ️ Título: {driver.title}")
+    print(f"ℹ️ Texto de la página (primeros 1000 chars):\n{body_text[:1000]}")
+    driver.quit()
+    raise RuntimeError("No se pudo detectar el listado de propiedades tras reintentos. DOM posiblemente cambiado o acceso bloqueado.")
 
 # Scroll to trigger loading
 for _ in range(3):
