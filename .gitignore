@@ -1,0 +1,4 @@
+.venv/
+scrape_error.png
+scrape_error.html
+scrape.log
