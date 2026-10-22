@@ -1,54 +1,41 @@
-#v10 from debugging
+#v12 playwright
 
 import json
 import os
 import time
-from datetime import datetime
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service
-from selenium.common.exceptions import TimeoutException
 
-# Configurar Chrome en modo headless para GitHub Actions
-options = Options()
-options.add_argument('--headless=new')
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
-options.add_argument('--disable-blink-features=AutomationControlled')
-options.add_argument('--disable-extensions')
-options.add_argument('--disable-plugins')
-options.add_argument('--disable-images')  # Speed up loading
-options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
-options.add_argument('--window-size=1920,1080')
+from playwright.sync_api import Error as PlaywrightError
+from playwright.sync_api import sync_playwright
 
-# Usar ChromeDriver preinstalado cuando existe en GitHub Actions.
-# Fallback a Selenium Manager para mayor robustez.
-chromedriver_path = "/usr/bin/chromedriver"
-if os.path.exists(chromedriver_path):
-    service = Service(executable_path=chromedriver_path)
-    driver = webdriver.Chrome(service=service, options=options)
-else:
-    driver = webdriver.Chrome(options=options)
-wait = WebDriverWait(driver, 30)
+AGENT_URL = "https://www.remax.com.ar/agent/javier-frank"
+OUTPUT_PATH = "docs/data/propiedades.json"
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+)
+BROWSER_ARGS = [
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-blink-features=AutomationControlled",
+    "--disable-extensions",
+]
+LISTING_LINKS = "a[href*='/listings/']"
+NON_PROPERTY_SLUGS = {"buy", "sell", "rent", "office", "agent"}
+METRIC_TOKENS = ["m²", "ambientes", "baños", "bano", "cubiertos", "totales", "terreno", "sup."]
 
-
-def first_text(element, selectors):
-    for selector in selectors:
-        nodes = element.find_elements(By.CSS_SELECTOR, selector)
-        for node in nodes:
-            text = (node.text or "").strip()
-            if text:
-                return text
-    return ""
+# Texto visible de los <p> de una card. innerText de un elemento con display:none
+# devuelve su textContent (ej. "Corredores responsables", solo para mobile),
+# así que se filtran los no renderizados.
+VISIBLE_P_TEXTS_JS = """root => [...root.querySelectorAll('p')]
+    .filter(el => el.checkVisibility())
+    .map(el => el.innerText.trim())
+    .filter(Boolean)"""
+HREFS_JS = "els => els.map(a => a.href)"
 
 
 def is_metric_text(text):
     text_l = text.lower()
-    metric_tokens = ["m²", "ambientes", "baños", "bano", "cubiertos", "totales", "terreno", "sup."]
-    return any(token in text_l for token in metric_tokens)
+    return any(token in text_l for token in METRIC_TOKENS)
 
 
 def is_price_text(text):
@@ -63,231 +50,168 @@ def normalize_listing_url(url):
 
 
 def is_property_listing_url(url):
-    if "/listings/" not in url:
-        return False
     slug = url.split("/listings/", 1)[1].strip("/")
-    if not slug:
-        return False
-    non_property_slugs = {"buy", "sell", "rent", "office", "agent"}
-    return slug.lower() not in non_property_slugs
+    return bool(slug) and slug.lower() not in NON_PROPERTY_SLUGS
 
 
-def pick_property_image(driver, url):
-    if not url:
-        return ""
-
+def pick_property_image(page, url):
     slug = url.split("/listings/", 1)[1]
-    candidate_images = driver.find_elements(By.CSS_SELECTOR, f"a[href*='/listings/{slug}'] img")
-    for img in candidate_images:
+    for img in page.locator(f"a[href*='/listings/{slug}'] img").all():
         src = (img.get_attribute("src") or "").strip()
-        if not src:
-            continue
         src_l = src.lower()
         # Evitar iconos de métricas embebidos en la card.
-        if "/assets/icons/" in src_l or src_l.endswith(".svg"):
-            continue
-        return src
-
+        if src and "/assets/icons/" not in src_l and not src_l.endswith(".svg"):
+            return src
     return ""
 
-# Ir a la página del agente
-driver.get("https://www.remax.com.ar/agent/javier-frank")
 
-# Esperar carga base del documento
-wait.until(lambda d: d.execute_script("return document.readyState") == "complete")
+def listing_count(page):
+    hrefs = page.eval_on_selector_all(LISTING_LINKS, HREFS_JS)
+    return len({normalize_listing_url(h) for h in hrefs if h})
 
-def find_listing_links(d):
-    selectors = [
-        "a[href*='/listings/']",
-        "a[href*='/propiedades/']",
-        "a[href*='/en/listings/']",
-        "a[href*='/es/listings/']",
-    ]
-    found = []
-    for sel in selectors:
-        found.extend(d.find_elements(By.CSS_SELECTOR, sel))
-    # dedupe by href
-    unique = {}
-    for a in found:
-        href = (a.get_attribute("href") or "").strip()
-        if href:
-            unique[href] = a
-    return list(unique.values())
 
-def listing_loaded(d):
-    legacy_cards = d.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
-    cards_container = d.find_elements(By.CSS_SELECTOR, "#cards-props")
-    if legacy_cards or cards_container or find_listing_links(d):
-        return True
-    d.execute_script("window.scrollBy(0, 700);")
+def wait_for_listing(page, timeout_s=30, poll_s=1.5):
+    """Espera el listado; si no aparece, scrollea un poco para disparar la carga."""
+    deadline = time.monotonic() + timeout_s
+    while time.monotonic() < deadline:
+        if page.locator("#cards-props").count() or listing_count(page):
+            return True
+        page.evaluate("window.scrollBy(0, 700);")
+        time.sleep(poll_s)
     return False
 
-# Esperar contenedor/listado con estrategia flexible + retry por scroll (hasta ~60s, recargando una vez)
-loaded = False
-for attempt in range(2):
-    try:
-        WebDriverWait(driver, 30, poll_frequency=1.5).until(listing_loaded)
-        loaded = True
-        break
-    except TimeoutException:
-        print(f"⚠️ Listado no detectado (intento {attempt + 1}), recargando...")
-        driver.refresh()
 
-if not loaded:
-    driver.save_screenshot("scrape_error.png")
-    with open("scrape_error.html", "w", encoding="utf-8") as f:
-        f.write(driver.page_source)
-    body_text = driver.execute_script("return document.body ? document.body.innerText : ''") or ""
-    print(f"ℹ️ URL actual: {driver.current_url}")
-    print(f"ℹ️ Título: {driver.title}")
-    print(f"ℹ️ Texto de la página (primeros 1000 chars):\n{body_text[:1000]}")
-    driver.quit()
-    raise RuntimeError("No se pudo detectar el listado de propiedades tras reintentos. DOM posiblemente cambiado o acceso bloqueado.")
-
-# Scroll to trigger loading
-for _ in range(3):
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(2)
-
-# Clic en "Ver más" hasta que desaparezca
-while True:
-    old_cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
-    listing_links = {
-        normalize_listing_url(link.get_attribute("href"))
-        for link in driver.find_elements(By.CSS_SELECTOR, "a[href*='/listings/']")
-        if link.get_attribute("href")
-    }
-    current_count = max(len(old_cards), len(listing_links))
-    
-    try:
-        # Buscar botón de "Ver más" en ambos DOMs.
-        real_button = None
-
-        qr_buttons = driver.find_elements(By.ID, "view-more")
-        if qr_buttons:
-            nested_buttons = qr_buttons[0].find_elements(By.TAG_NAME, "button")
-            if nested_buttons:
-                real_button = nested_buttons[0]
-
-        if real_button is None:
-            text_buttons = driver.find_elements(By.XPATH, "//button[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚ', 'abcdefghijklmnopqrstuvwxyzáéíóú'), 'ver más')]")
-            if text_buttons:
-                real_button = text_buttons[0]
-
-        if real_button is None:
-            break
-        
-        if not real_button.is_displayed():
-            break
-        
-        driver.execute_script("arguments[0].scrollIntoView(true);", real_button)
+def click_view_more_until_done(page):
+    while True:
+        button = page.locator("#view-more button")
+        if not button.count() or not button.first.is_visible():
+            return
+        before = listing_count(page)
+        button.first.scroll_into_view_if_needed()
         time.sleep(0.5)
-        driver.execute_script("arguments[0].click();", real_button)
+        button.first.evaluate("el => el.click()")
         time.sleep(3)
-        
-        old_cards_after = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
-        listing_links_after = {
-            normalize_listing_url(link.get_attribute("href"))
-            for link in driver.find_elements(By.CSS_SELECTOR, "a[href*='/listings/']")
-            if link.get_attribute("href")
-        }
-        after_count = max(len(old_cards_after), len(listing_links_after))
-        if after_count == current_count:
-            break
-    except Exception as e:
-        print(f"⚠️ No more 'Ver más' button or error: {e}")
-        break
+        if listing_count(page) == before:
+            return
 
-# Extraer info del DOM
-cards = driver.find_elements(By.CSS_SELECTOR, ".card-remax.viewGrid")
-listing_anchors = driver.find_elements(By.CSS_SELECTOR, "a[href*='/listings/']")
-print(f"ℹ️ Legacy cards detectadas: {len(cards)}")
-print(f"ℹ️ Links de listings detectados: {len(listing_anchors)}")
 
-properties = []
+def launch_browser(playwright):
+    """Usa el Google Chrome instalado; si no está, cae al Chromium que trae Playwright."""
+    try:
+        return playwright.chromium.launch(channel="chrome", headless=True, args=BROWSER_ARGS)
+    except PlaywrightError as e:
+        print(f"ℹ️ No se pudo usar Google Chrome ({str(e).splitlines()[0]}); usando Chromium de Playwright.")
+        return playwright.chromium.launch(headless=True, args=BROWSER_ARGS)
 
-if cards:
-    # Parser legacy (DOM anterior).
-    for card in cards:
-        try:
-            title = first_text(card, ["p.card__description"])
-            location = first_text(card, ["p.card__address"])
-            price = first_text(card, ["p.card__price"])
 
-            image_elem = card.find_elements(By.CSS_SELECTOR, "img.carousel__slide")
-            image_url = image_elem[0].get_attribute("src") if image_elem else ""
+def dump_diagnostics(page):
+    page.screenshot(path="scrape_error.png", full_page=True)
+    with open("scrape_error.html", "w", encoding="utf-8") as f:
+        f.write(page.content())
+    body_text = page.evaluate("document.body ? document.body.innerText : ''") or ""
+    print(f"ℹ️ URL actual: {page.url}")
+    print(f"ℹ️ Título: {page.title()}")
+    print(f"ℹ️ Texto de la página (primeros 1000 chars):\n{body_text[:1000]}")
 
-            link_elem = card.find_elements(By.CSS_SELECTOR, "a.card-remax__href")
-            url = link_elem[0].get_attribute("href") if link_elem else ""
 
-            if url:
-                properties.append({
-                    "titulo": title,
-                    "ubicacion": location,
-                    "precio": price,
-                    "imagen": image_url,
-                    "url": normalize_listing_url(url)
-                })
-        except Exception as e:
-            print(f"⚠️ Error en una tarjeta legacy: {e}")
-else:
-    # Parser nuevo (DOM actual por anchors de listing).
+def parse_anchor(page, anchor):
+    """Devuelve la propiedad de un anchor de listing, o None si no es una card útil."""
+    # .href devuelve la URL absoluta.
+    url = normalize_listing_url(anchor.evaluate("a => a.href"))
+    if not url or not is_property_listing_url(url):
+        return None
+
+    p_texts = anchor.evaluate(VISIBLE_P_TEXTS_JS)
+    price_parts = [t for t in p_texts if is_price_text(t)]
+    content_texts = [t for t in p_texts if not is_price_text(t) and not is_metric_text(t)]
+    location = next((t for t in content_texts if any(c.isdigit() for c in t)), "")
+    title = next((t for t in reversed(content_texts) if t != location), "")
+    if not title and p_texts:
+        title = p_texts[-1]
+
+    return {
+        "text_score": sum(len(t) for t in p_texts),
+        "titulo": title,
+        "ubicacion": location,
+        "precio": " | ".join(price_parts[:2]),
+        "imagen": pick_property_image(page, url),
+        "url": url,
+    }
+
+
+def extract_properties(page):
+    anchors = page.locator(LISTING_LINKS).all()
+    print(f"ℹ️ Links de listings detectados: {len(anchors)}")
+
+    # Cada propiedad aparece en varios anchors (imagen, card...): quedarse con el de más texto.
     by_url = {}
-    for anchor in listing_anchors:
+    for anchor in anchors:
         try:
-            url = normalize_listing_url(anchor.get_attribute("href"))
-            if not url or not is_property_listing_url(url):
-                continue
-
-            candidate = by_url.get(url, {"text_score": -1})
-
-            p_texts = [
-                (node.text or "").strip()
-                for node in anchor.find_elements(By.CSS_SELECTOR, "p")
-                if (node.text or "").strip()
-            ]
-            text_score = sum(len(text) for text in p_texts)
-            if text_score <= candidate.get("text_score", -1):
-                continue
-
-            price_parts = [text for text in p_texts if is_price_text(text)]
-            price = " | ".join(price_parts[:2]) if price_parts else ""
-
-            content_texts = [text for text in p_texts if not is_price_text(text) and not is_metric_text(text)]
-            location = next((text for text in content_texts if any(char.isdigit() for char in text)), "")
-            title = ""
-            for text in reversed(content_texts):
-                if text != location:
-                    title = text
-                    break
-            if not title and p_texts:
-                title = p_texts[-1]
-
-            image_url = pick_property_image(driver, url)
-
-            by_url[url] = {
-                "text_score": text_score,
-                "titulo": title,
-                "ubicacion": location,
-                "precio": price,
-                "imagen": image_url,
-                "url": url
-            }
-        except Exception as e:
+            item = parse_anchor(page, anchor)
+        except PlaywrightError as e:
             print(f"⚠️ Error procesando anchor listing: {e}")
+            continue
+        if item is None:
+            continue
+        current = by_url.get(item["url"])
+        if current is None or item["text_score"] > current["text_score"]:
+            by_url[item["url"]] = item
 
-    properties = [
+    return [
         {k: v for k, v in item.items() if k != "text_score"}
         for item in by_url.values()
-        if item.get("titulo") or item.get("ubicacion") or item.get("precio")
+        if item["titulo"] or item["ubicacion"] or item["precio"]
     ]
 
-print(f"✅ Se detectaron {len(properties)} propiedades parseadas")
 
-# Guardar JSON
-os.makedirs("docs/data", exist_ok=True)
-with open("docs/data/propiedades.json", "w", encoding="utf-8") as f:
-    json.dump(properties, f, ensure_ascii=False, indent=2)
+def scrape():
+    with sync_playwright() as p:
+        browser = launch_browser(p)
+        context = browser.new_context(
+            user_agent=USER_AGENT,
+            viewport={"width": 1920, "height": 1080},
+            locale="es-AR",
+        )
+        # Bloquear imágenes para acelerar la carga.
+        context.route(
+            "**/*",
+            lambda route: route.abort() if route.request.resource_type == "image" else route.continue_(),
+        )
+        page = context.new_page()
+        page.set_default_timeout(30_000)
+        page.goto(AGENT_URL, wait_until="load")
 
-driver.quit()
-print(f"✅ Scraping completo. {len(properties)} propiedades guardadas en docs/data/propiedades.json")
+        # Hasta ~60s en total, recargando una vez si no aparece el listado.
+        loaded = False
+        for attempt in range(2):
+            if wait_for_listing(page):
+                loaded = True
+                break
+            print(f"⚠️ Listado no detectado (intento {attempt + 1}), recargando...")
+            page.reload(wait_until="load")
+
+        if not loaded:
+            dump_diagnostics(page)
+            browser.close()
+            raise RuntimeError(
+                "No se pudo detectar el listado de propiedades tras reintentos. "
+                "DOM posiblemente cambiado o acceso bloqueado."
+            )
+
+        # Scroll para disparar la carga diferida
+        for _ in range(3):
+            page.evaluate("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(2)
+
+        click_view_more_until_done(page)
+        properties = extract_properties(page)
+        browser.close()
+
+    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(properties, f, ensure_ascii=False, indent=2)
+    print(f"✅ Scraping completo. {len(properties)} propiedades guardadas en {OUTPUT_PATH}")
+
+
+if __name__ == "__main__":
+    scrape()

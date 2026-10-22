@@ -26,7 +26,8 @@ computadora, que scrapea y publica `docs/data/propiedades.json`.
 
 Requisitos previos (una sola vez):
 
-- **Google Chrome** instalado.
+- **Google Chrome** instalado (el scraper usa Playwright con el Chrome de la PC; si no hay Chrome,
+  correr `.venv/bin/python -m playwright install chromium` una vez para que descargue su propio navegador).
 - **Python 3** desde <https://www.python.org/downloads/macos/> (el instalador oficial).
   Evitar el `python3` que trae macOS, porque pide instalar las Xcode Command Line Tools.
 
@@ -92,6 +93,7 @@ opción necesita credenciales de git guardadas en la Mac. El runner no las neces
 ## 2b. Instalación en Windows
 
 Requisitos: **Google Chrome** y **Python 3** (con *Add python.exe to PATH* marcado).
+Sin Chrome, correr `.venv\Scripts\python.exe -m playwright install chromium` una vez.
 
 En PowerShell **como administrador**:
 
